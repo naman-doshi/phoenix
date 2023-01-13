@@ -1,0 +1,2481 @@
+<!--SHArdow-->
+
+<!doctype html>
+<html lang="en" id="documentRoot">
+
+    <head>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="A site by SHArdow for 'pisces_' releases...">
+        <meta name="theme-color" content="#242424">
+        <meta name="robots" content="noindex, nofollow, noimageindex, noarchive, nosnippet">
+        <meta name="author" content="shardow">
+        <meta name="og:title" content="pisces_">
+        <meta name="og:description" content="A site by SHArdow for 'pisces_' releases...">
+        <meta name="og:image" content="https://shardowyt.gitlab.io/pisces/assets/icons/superlargesnail.png">
+        <meta name="og:url" content="https://shardowyt.gitlab.io/pisces/">
+        <meta name="og:type" content="website">
+        <title>pisces_ login</title>
+        <link rel="icon" href="snail.png">
+        <link rel="apple-touch-icon" href="snail.png">
+        <link rel="manifest" href="manifest.webmanifest">
+
+
+        <style>
+
+
+
+
+            @font-face
+            {
+                font-family: "JetBrains Mono NL";
+                font-style: normal;
+                font-weight: normal;
+                license: "https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt";
+            }
+
+
+
+            .defaultFont
+            {
+                font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;
+                color: #FFFFFFE0;
+            }
+
+            .monospaceFont
+            {
+                font-family: Jetbrains Mono NL, Lucida Console, Consolas, monospace;
+                color: #FFFFFFE0;
+            }
+
+
+
+
+
+
+
+
+
+            #documentRoot
+            {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(225deg, #202024, #101016);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            #documentBody
+            {
+                background: linear-gradient(225deg, #202024, #101016);
+                overflow: hidden;
+                user-select: none;
+                margin: 0.0800px;
+                width: 100vw;
+                height: 100vh;
+                cursor: crosshair;
+            }
+
+
+
+
+
+
+
+
+            #background
+            {
+                position: absolute;
+                width: 120%;
+                height: auto;
+                opacity: 0;
+                transform: translate(0%, -8%);
+                transition-duration: 1s;
+                pointer-events: none;
+            }
+
+
+
+
+
+
+
+
+            .hexagonPatternPath
+            {
+                fill: none;
+                stroke: #FFFFFF;
+                stroke-width: 16px;
+                stroke-miterlimit: 1;
+                stroke-linejoin: round;
+            }
+
+
+
+
+            #hexagonTileSvg
+            {
+                position: absolute;
+                display: inline-block;
+                opacity: 0.0167;
+                margin: 0;
+                transform: translate(0px, -44px);
+                pointer-events: none;
+            }
+
+
+
+
+
+
+
+            #credentialsGradient
+            {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: auto;
+                bottom: auto;
+                left: calc(-576px - 64px);
+                right: auto;
+                background: linear-gradient(90deg, #00000000 0px, #00000000 640px, #00000080 640px, #00000060 768px, #00000000 1024px);
+                /* border-radius: 0px 64px 64px 0px; */
+                pointer-events: none;
+
+                transition-duration: 0.5s;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            #credentialsDisplayGridContainer
+            {
+
+                position: absolute;
+                width: 576px;
+                height: 100%;
+                top: auto;
+                bottom: auto;
+                left: calc(-576px - 64px);
+                right: auto;
+
+                background-color: #00000080;
+                /* border: 0.8px solid #FFFFFF10; */
+
+                overflow-x: hidden;
+                overflow-y: scroll;
+                transform: rotateY(180deg);
+
+                padding-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 64px;
+
+
+                transition-duration: 0.5s;
+
+            }
+
+
+            #credentialsDisplayGridContainer::-webkit-scrollbar
+            {
+                width: 16px;
+            }
+            #credentialsDisplayGridContainer::-webkit-scrollbar-track
+            {
+                display: none;
+            }
+            #credentialsDisplayGridContainer::-webkit-scrollbar-corner
+            {
+                display: none;
+            }
+            #credentialsDisplayGridContainer::-webkit-scrollbar-thumb
+            {
+                display: block;
+                background: #FFFFFFE0;
+                border-radius: 8px;
+            }
+
+
+
+
+
+
+            #credentialsDisplayGrid
+            {
+
+                display: grid;
+                width: 100%;
+                height: 100%;
+
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(0px, 192px) 64px 128px 36px 48px 64px 96px 1fr 24px 24px 64px;
+
+                transform: rotateY(-180deg);
+
+                padding-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 64px;
+                padding-right: 0px;
+
+            }
+
+
+
+
+
+
+
+
+            #siteIconsContainer
+            {
+                display: grid;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                grid-template-columns: 100%;
+                grid-template-rows: 100%;
+                grid-area: 1 / 1 / span 1 / span 1;
+                mask-image: linear-gradient(180deg, #FFFFFFFF 0%, #FFFFFFFF 80%, #FFFFFF00 100%);
+                -webkit-mask-image: linear-gradient(180deg, #FFFFFFFF 0%, #FFFFFFFF 80%, #FFFFFF00 100%);
+            }
+
+
+
+
+
+            #siteLogo
+            {
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                border: none;
+                transform: translate(25%, -100%) scale(1.5);
+                transition-duration: 0.5s;
+                grid-area: 1 / 1 / span 1 / span 1;
+            }
+
+
+
+
+
+
+
+
+
+            #socialMediaContainer
+            {
+                display: grid;
+                width: 256px;
+                height: 64px;
+                overflow: visible;
+                grid-area: 1 / 1 / span 1 / span 1;
+                grid-template-columns: repeat(auto-fill, 64px);
+                grid-template-rows: 100%;
+                row-gap: 8px;
+                column-gap: 8px;
+                transform: translate(50%, -100%);
+                transition-duration: 0.1667s;
+
+            }
+
+            #socialMediaContainer > *
+            {
+                justify-content: center;
+                text-align: center;
+                cursor: pointer;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            .socialMediaLink
+            {
+
+                width: 64px;
+                height: 64px;
+                overflow: visible;
+
+
+
+                background-image: linear-gradient(70deg, #FFFFFF20 0%, #FFFFFF20 48%, #FFFFFFA0 48.5%, #FFFFFFA0 50%, #FFFFFFA0 51.5%, #FFFFFF10 52%, #FFFFFF10 100%);
+                background-size: 250%;
+                background-repeat: no-repeat;
+                background-position: 100%;
+
+                border-radius: 24px;
+
+                transition-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+
+            }
+
+
+
+
+
+            .socialMediaLink:hover
+            {
+                background-position: 0%;
+                transform: scale(1.1024);
+            }
+
+
+
+
+
+            .socialMediaLinkIcon
+            {
+
+                display: inline;
+
+                width: auto;
+                height: 48px;
+
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: auto;
+                padding-right: auto;
+
+                filter: saturate(1);
+
+                transition-duration: 0.2s;
+
+
+
+            }
+
+
+
+
+            .socialMediaLinkIcon:hover
+            {
+                transform: scale(1.1042);
+                filter: saturate(0.8);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            #welcomeTitle
+            {
+                z-index: 1;
+                font-size: 64px;
+                transition-duration: 0.1667s;
+
+                background: linear-gradient(120deg, #00A0C0 0%, #0060C0 100%);
+                background-clip: text;
+                text-fill-color: #00000000;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: #00000000;
+                background-size: 300% auto;
+
+            }
+
+            #welcomeTitle:hover
+            {
+                background-size: 100% auto;
+            }
+
+
+
+
+
+            #siteTitle
+            {
+                z-index: 1;
+                font-size: 72px;
+                font-weight: bold;
+                transition-duration: 0.1667s;
+
+                background: linear-gradient(120deg, #00A0C0 0%, #0060C0 100%);
+                background-clip: text;
+                text-fill-color: #00000000;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: #00000000;
+                background-size: 300% auto;
+
+            }
+
+            #siteTitle:hover
+            {
+                background-size: 100% auto;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            #credentialsInputLabel
+            {
+                font-size: 24px;
+                transition-duration: 0.1667s;
+                cursor: help;
+                color: #E0E0E0E0;
+            }
+
+            #credentialsInputLabel:hover
+            {
+                color: #FFFFFFE0;
+            }
+
+
+
+
+            .credentialsInput
+            {
+                position: relative;
+                width: 0px;
+                height: 32px;
+                background-color: #24242480;
+                color: #FFFFFF;
+                font-size: 20px;
+                outline: none;
+                border: none;
+                border-radius: 16px;
+                border-color: transparent;
+                caret-color: #0080C0;
+                transition-duration: 0.3333s;
+                color-scheme: dark;
+                
+            }
+
+            .credentialsInput:hover
+            {
+                background-color: #242424E0;
+            }
+
+            .credentialsInput:valid
+            {
+                background-color: #242424A0 !important;
+            }
+
+
+
+
+
+
+
+
+
+
+
+            #credentialsButtonsContainer
+            {
+                display: grid;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                grid-template-columns: 50% 50%;
+                grid-template-rows: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .credentialsButton
+            {
+
+                border-color: transparent;
+                font-size: 24px;
+                color: #FFFFFF;
+                width: 192px;
+                height: 48px;
+                border: none;
+                border-radius: 24px;
+                border-color: transparent;
+                outline: none;
+
+
+                background-image: linear-gradient(70deg, #40C000 0%, #80C000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #00A0C0 52%, #0080C0 100%);
+                background-size: 250%;
+                background-repeat: no-repeat;
+                background-position: 100%;
+
+                transition-duration: 0.3333s;
+
+                cursor: pointer;
+
+            }
+
+            .credentialsButton:hover
+            {
+                background-position: 0%;
+            }
+
+
+
+
+            #credentialsSubmit
+            {
+                width: 192px;
+                height: 48px;
+                background-image: linear-gradient(70deg, #40C000 0%, #80C000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #00A0C0 52%, #0080C0 100%);
+            }
+
+            #credentialsForgot
+            {
+                width: 128px;
+                height: 36px;
+                background-image: linear-gradient(70deg, #208000 0%, #40A000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #002060 52%, #004060 100%);
+                opacity: 0.8;
+            }
+
+
+            #credentialsForgot:hover
+            {
+                opacity: 1;
+            }
+
+
+
+
+
+
+
+            #questionsContainer
+            {
+                display: grid;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                width: 100%;
+                height: 100%;
+                grid-template-columns: 100%;
+                grid-template-rows: 72px repeat(3, 36px);
+            }
+
+
+            #questionsContainer::-webkit-scrollbar
+            {
+                width: 16px;
+            }
+            #questionsContainer::-webkit-scrollbar-track
+            {
+                display: none;
+            }
+            #questionsContainer::-webkit-scrollbar-corner
+            {
+                display: none;
+            }
+            #questionsContainer::-webkit-scrollbar-thumb
+            {
+                display: block;
+                background: #FFFFFFE0;
+                border-radius: 8px;
+            }
+
+
+
+
+
+
+            #questionsContainer > *:nth-child(1)
+            {
+                font-size: 48px;
+                font-weight: normal;
+                color: #00A0C0;
+            }
+
+
+            #questionsContainer > *:nth-child(1):hover
+            {
+
+                color: #0080C0;
+            }
+
+
+            #questionsContainer > *:nth-child(1)::before
+            {
+                content: none;
+            }
+
+
+
+            #questionsContainer > *
+            {
+                overflow: hidden;
+                width: 100%;
+                height: 92%;
+                transform: translate(2px, 0px);
+                font-size: 24px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-weight: lighter;
+                transition-duration: 0.1667s;
+                cursor: help;
+            }
+
+            #questionsContainer > *::before
+            {
+                content: "\203B";
+            }
+
+
+
+
+            #questionsContainer > *:hover
+            {
+                color: #0080C0;
+            }
+
+
+
+
+            #questionAnswer
+            {
+
+                display: flex;
+
+                position: absolute;
+                width: 256px;
+                height: 0px;
+                grid-area: 8 / 1 / span 1 / span 1;
+
+                overflow: hidden;
+                justify-content: left;
+                align-items: flex-start;
+                text-align: justify;
+
+                padding: 16px;
+
+                background: #FFFFFFA0;
+                border-radius: 32px;
+                transform: translate(224px, 0px);
+                opacity: 0;
+
+                color: #000000;
+                transition-duration: 0.5s;
+                font-size: 24px;
+                pointer-events: none;
+
+            }
+
+
+
+
+
+
+
+            #conceptText
+            {
+                transition-duration: 0.1667s;
+                cursor: help;
+                color: #606060E0;
+            }
+            #conceptText:hover
+            {
+                color: #808080E0;
+            }
+
+
+
+
+            #designText
+            {
+                transition-duration: 0.1667s;
+                cursor: help;
+                color: #606060E0;
+            }
+            #designText:hover
+            {
+                color: #808080E0;
+            }
+
+
+
+
+
+            #noJsContainer
+            {
+                z-index: 9;
+                position: absolute;
+                display: block;
+                width: 100vw;
+                height: 100vh;
+                top: 0px;
+                bottom: auto;
+                left: 0px;
+                right: auto;
+                justify-content: center;
+                align-items: center;
+                background-color: #24242480;
+            }
+
+
+            #noJsTitle
+            {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                font-size: 72px;
+                transform: translate(0px, -48px)
+            }
+
+
+            #noJsSubtitle
+            {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                font-size: 36px;
+                transform: translate(0px, 48px)
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </style>
+
+
+
+    </head>
+
+
+
+
+
+    <body id="documentBody">
+
+
+
+        <img id="background" src="" alt="Background image"></img>
+
+
+
+
+        <audio id="backgroundSound" loop>
+            <source src="" type="audio/mpeg">
+        </audio>
+
+
+
+
+
+
+
+
+        <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150" style="position: absolute;width: 100vh;height: 30.5556vh;transform: rotate(90deg) scaleY(0.25) translate(35vh, 100vw);">
+            <style>
+                .path-0{
+                    animation:pathAnim-0 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                @keyframes pathAnim-0{
+                    0%{
+                    d: path("M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z");
+                    }
+                    25%{
+                    d: path("M 0,400 C 0,400 0,80 0,80 C 93.52153110047843,70.34449760765551 187.04306220095685,60.68899521531101 285,64 C 382.95693779904315,67.31100478468899 485.3492822966508,83.58851674641147 580,94 C 674.6507177033492,104.41148325358853 761.5598086124402,108.95693779904306 868,108 C 974.4401913875598,107.04306220095694 1100.4114832535886,100.58373205741627 1199,95 C 1297.5885167464114,89.41626794258373 1368.7942583732056,84.70813397129186 1440,80 C 1440,80 1440,400 1440,400 Z");
+                    }
+                    50%{
+                    d: path("M 0,400 C 0,400 0,80 0,80 C 82.3732057416268,94.05741626794259 164.7464114832536,108.11483253588517 250,103 C 335.2535885167464,97.88516746411483 423.38755980861254,73.5980861244019 524,63 C 624.6124401913875,52.40191387559809 737.7033492822965,55.49282296650718 844,60 C 950.2966507177035,64.50717703349282 1049.799043062201,70.43062200956938 1148,74 C 1246.200956937799,77.56937799043062 1343.1004784688994,78.7846889952153 1440,80 C 1440,80 1440,400 1440,400 Z");
+                    }
+                    75%{
+                    d: path("M 0,400 C 0,400 0,80 0,80 C 92.56459330143542,68.36363636363636 185.12918660287085,56.72727272727272 292,61 C 398.87081339712915,65.27272727272728 520.0478468899521,85.45454545454547 607,89 C 693.9521531100479,92.54545454545453 746.6794258373207,79.45454545454545 840,77 C 933.3205741626793,74.54545454545455 1067.2344497607655,82.72727272727272 1174,85 C 1280.7655502392345,87.27272727272728 1360.3827751196172,83.63636363636364 1440,80 C 1440,80 1440,400 1440,400 Z");
+                    }
+                    100%{
+                    d: path("M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z");
+                    }
+                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc44"></stop><stop offset="95%" stop-color="#32ded444"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><style>
+                .path-1{
+                    animation:pathAnim-1 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                @keyframes pathAnim-1{
+                    0%{
+                    d: path("M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z");
+                    }
+                    25%{
+                    d: path("M 0,400 C 0,400 0,160 0,160 C 117.81818181818184,151.22488038277513 235.63636363636368,142.44976076555025 326,138 C 416.3636363636363,133.55023923444975 479.27272727272714,133.42583732057415 556,138 C 632.7272727272729,142.57416267942585 723.2727272727274,151.8468899521531 820,150 C 916.7272727272726,148.1531100478469 1019.6363636363635,135.1866028708134 1124,135 C 1228.3636363636365,134.8133971291866 1334.1818181818182,147.40669856459328 1440,160 C 1440,160 1440,400 1440,400 Z");
+                    }
+                    50%{
+                    d: path("M 0,400 C 0,400 0,160 0,160 C 95.57894736842107,159.83732057416267 191.15789473684214,159.67464114832538 296,156 C 400.84210526315786,152.32535885167462 514.9473684210526,145.13875598086125 606,138 C 697.0526315789474,130.86124401913875 765.0526315789474,123.77033492822969 866,131 C 966.9473684210526,138.2296650717703 1100.842105263158,159.7799043062201 1202,167 C 1303.157894736842,174.2200956937799 1371.578947368421,167.11004784688996 1440,160 C 1440,160 1440,400 1440,400 Z");
+                    }
+                    75%{
+                    d: path("M 0,400 C 0,400 0,160 0,160 C 94.32535885167468,177.71291866028707 188.65071770334936,195.42583732057417 278,188 C 367.34928229665064,180.57416267942583 451.72248803827745,148.00956937799043 544,148 C 636.2775119617226,147.99043062200957 736.4593301435407,180.53588516746413 830,186 C 923.5406698564593,191.46411483253587 1010.4401913875597,169.8468899521531 1111,161 C 1211.5598086124403,152.1531100478469 1325.77990430622,156.07655502392345 1440,160 C 1440,160 1440,400 1440,400 Z");
+                    }
+                    100%{
+                    d: path("M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z");
+                    }
+                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc66"></stop><stop offset="95%" stop-color="#32ded466"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-1"></path><style>
+                .path-2{
+                    animation:pathAnim-2 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                @keyframes pathAnim-2{
+                    0%{
+                    d: path("M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z");
+                    }
+                    25%{
+                    d: path("M 0,400 C 0,400 0,240 0,240 C 79.93301435406698,235.7799043062201 159.86602870813397,231.5598086124402 247,228 C 334.13397129186603,224.4401913875598 428.46889952153117,221.54066985645937 525,232 C 621.5311004784688,242.45933014354063 720.2583732057415,266.2775119617225 830,267 C 939.7416267942585,267.7224880382775 1060.4976076555026,245.34928229665073 1164,237 C 1267.5023923444974,228.65071770334927 1353.7511961722487,234.32535885167465 1440,240 C 1440,240 1440,400 1440,400 Z");
+                    }
+                    50%{
+                    d: path("M 0,400 C 0,400 0,240 0,240 C 108.61244019138758,246.59330143540672 217.22488038277515,253.1866028708134 325,251 C 432.77511961722485,248.8133971291866 539.7129186602871,237.84688995215313 626,236 C 712.2870813397129,234.15311004784687 777.9234449760766,241.42583732057412 854,240 C 930.0765550239234,238.57416267942588 1016.5933014354068,228.44976076555025 1116,227 C 1215.4066985645932,225.55023923444975 1327.7033492822966,232.77511961722487 1440,240 C 1440,240 1440,400 1440,400 Z");
+                    }
+                    75%{
+                    d: path("M 0,400 C 0,400 0,240 0,240 C 95.07177033492823,255.42583732057417 190.14354066985646,270.85167464114835 278,269 C 365.85645933014354,267.14832535885165 446.4976076555024,248.01913875598086 535,234 C 623.5023923444976,219.98086124401914 719.866028708134,211.07177033492823 839,211 C 958.133971291866,210.92822966507177 1100.0382775119617,219.6937799043062 1204,226 C 1307.9617224880383,232.3062200956938 1373.9808612440193,236.1531100478469 1440,240 C 1440,240 1440,400 1440,400 Z");
+                    }
+                    100%{
+                    d: path("M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z");
+                    }
+                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc88"></stop><stop offset="95%" stop-color="#32ded488"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-2"></path><style>
+                .path-3{
+                    animation:pathAnim-3 4s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                }
+                @keyframes pathAnim-3{
+                    0%{
+                    d: path("M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z");
+                    }
+                    25%{
+                    d: path("M 0,400 C 0,400 0,320 0,320 C 118.23923444976077,304.8516746411483 236.47846889952154,289.70334928229664 339,297 C 441.52153110047846,304.29665071770336 528.3253588516747,334.0382775119617 602,336 C 675.6746411483253,337.9617224880383 736.22009569378,312.14354066985646 817,312 C 897.77990430622,311.85645933014354 998.7942583732058,337.3875598086124 1106,343 C 1213.2057416267942,348.6124401913876 1326.6028708133972,334.3062200956938 1440,320 C 1440,320 1440,400 1440,400 Z");
+                    }
+                    50%{
+                    d: path("M 0,400 C 0,400 0,320 0,320 C 70.20095693779902,331.9521531100479 140.40191387559804,343.90430622009575 245,349 C 349.59808612440196,354.09569377990425 488.5933014354067,352.334928229665 584,338 C 679.4066985645933,323.665071770335 731.2248803827753,296.755980861244 821,299 C 910.7751196172247,301.244019138756 1038.5071770334928,332.64114832535887 1148,341 C 1257.4928229665072,349.35885167464113 1348.7464114832537,334.67942583732054 1440,320 C 1440,320 1440,400 1440,400 Z");
+                    }
+                    75%{
+                    d: path("M 0,400 C 0,400 0,320 0,320 C 78.24880382775117,319.22488038277515 156.49760765550235,318.44976076555025 257,321 C 357.50239234449765,323.55023923444975 480.2583732057417,329.4258373205742 567,330 C 653.7416267942583,330.5741626794258 704.4688995215312,325.8468899521531 812,318 C 919.5311004784688,310.1531100478469 1083.8660287081339,299.1866028708134 1198,299 C 1312.1339712918661,298.8133971291866 1376.066985645933,309.4066985645933 1440,320 C 1440,320 1440,400 1440,400 Z");
+                    }
+                    100%{
+                    d: path("M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z");
+                    }
+                }</style>
+                <defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdcff"></stop><stop offset="95%" stop-color="#32ded4ff"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-3"></path>
+        </svg>
+
+
+
+
+        <div id="credentialsGradient"></div>
+
+
+
+
+
+        <div id="credentialsDisplayGridContainer">
+
+
+
+
+            <div id="credentialsDisplayGrid">
+
+
+
+                <div class="defaultFont" id="siteIconsContainer">
+
+
+                    <iframe id="siteLogo" src="" title="Pisces logo"></iframe>
+
+
+                    <div id="socialMediaContainer">
+
+                        <a class="socialMediaLink" href="https://gitlab.com/shardowyt" target="_blank" rel="noopener">
+                            <img class="socialMediaLinkIcon" id="gitlabIcon" src="" title="GitLab" alt="GitLab">
+                        </a>
+
+                        <a class="socialMediaLink" href="https://discord.gg/GGsFdmDgRM" target="_blank" rel="noopener">
+                            <img class="socialMediaLinkIcon" id="discordIcon" src="" title="Discord" alt="Discord" style="height: 32px; transform: translate(0px, 8px)">
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="defaultFont" id="welcomeTitle" style="font-size: 64px"></div>
+                <div class="defaultFont" id="siteTitle" style="font-size: 72px"></div>
+
+                <label class="defaultFont" id="credentialsInputLabel" for="credentialsInput"></label>
+                <input class="monospaceFont credentialsInput" id="credentialsEmailInput" type="text" maxlength="64" placeholder="email/id" required/>
+                <input class="monospaceFont credentialsInput" id="credentialsPasswordInput" type="password" maxlength="128" placeholder="password" required/>
+
+
+                <div id="credentialsButtonsContainer">
+
+                    <button class="defaultFont credentialsButton" id="credentialsSubmit" type="button">Login</button>
+                    <button class="defaultFont credentialsButton" id="credentialsForgot" type="button">recover</button>
+
+                </div>
+
+
+
+
+
+
+                <div class="defaultFont" id="questionsContainer">
+
+                    <div class="defaultFont">FAQ</div>
+
+                </div>
+
+
+                <div class="defaultFont" id="questionAnswer">blah</div>
+
+
+                <div class="defaultFont" id="conceptText"></div>
+                <div class="defaultFont" id="designText"></div>
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+
+
+
+
+
+
+            async function login()
+            {
+
+
+
+
+
+                async function sleep(delay)
+                {
+
+                    return new Promise
+                    (
+
+                        function(resolve, reject)
+                        {
+
+                            setTimeout
+                            (
+
+                                (
+
+                                    function()
+                                    {
+                                        resolve();
+                                    }
+
+                                ),
+                                delay
+
+                            );
+
+                        }
+
+                    );
+
+                }
+
+
+                async function changeText(element, textChange, duration)
+                {
+
+                    var previousText = element.innerHTML;
+
+                    if (previousText == textChange)
+                    {
+                    }
+                    else if (previousText != textChange)
+                    {
+
+                        // console.log(textChange);
+
+                        var cursorPosition = ((previousText.length) - 1);
+                        var textLength = (textChange.length);
+                        var characterAnimationDuration = (duration / (((previousText.length) - 1) + (textChange.length)));
+
+                        // console.log(element.innerHTML);
+
+                        if (duration <= 66.6667)
+                        {
+                            element.innerHTML = textChange;
+                        }
+                        else if (duration > 66.6667)
+                        {
+
+                            while (cursorPosition > 0)
+                            {
+                                element.innerHTML = (previousText.substr(0, cursorPosition));
+                                cursorPosition = cursorPosition - 1;
+
+                                await sleep(characterAnimationDuration);
+                            }
+
+                            cursorPosition = 0;
+
+                            while (cursorPosition <= textLength)
+                            {
+                                element.innerHTML = textChange.substr(0, cursorPosition);
+                                cursorPosition = cursorPosition + 1;
+
+                                await sleep(characterAnimationDuration);
+                            }
+
+                        }
+                        else
+                        {
+                            throw "Impossible Condition";
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        throw "Impossible Condition";
+                    }
+
+                }
+
+
+
+
+                function createQuestions()
+                {
+
+                    var questions = 
+                    [
+                        ["What is this?", "A beta version of pisces_, a new app for NSBs"],
+                        ["What credentials should I use?", "The ones given to you, if you didn&#x0027t recieve any you were not nominated to be a beta tester"],
+                        ["I cannot login", "Contact Perry Chen nicely"],
+                    ];
+
+                    var questionsLength = questions.length;
+
+
+                    var repeats = 0;
+                    while (repeats < questionsLength)
+                    {
+
+                        var newQuestion = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+                        document.getElementById("questionsContainer").appendChild(newQuestion);
+                        newQuestion.classList.add("defaultFont");
+                        newQuestion.innerHTML = ((questions[repeats])[0]);
+                        newQuestion.style.setProperty(("--" + "answer"), ((questions[repeats])[1]));
+
+
+
+                        newQuestion.addEventListener
+                        (
+
+                            "mouseover",
+                            (
+
+                                function()
+                                {
+                                    document.getElementById("questionAnswer").style.opacity = "1";
+                                    document.getElementById("questionAnswer").style.height = "128px";
+                                    document.getElementById("questionAnswer").style.transform = "translate(224px, -96px)";
+                                    document.getElementById("credentialsForgot").style.opacity = "0";
+                                    changeText((document.getElementById("questionAnswer")), (this.style.getPropertyValue("--" + "answer")), "500");
+                                }
+
+                            )
+
+                        );
+
+
+                        newQuestion.addEventListener
+                        (
+
+                            "mouseleave",
+                            (
+
+                                function()
+                                {
+                                    document.getElementById("questionAnswer").style.opacity = "0";
+                                    document.getElementById("questionAnswer").style.height = "0px";
+                                    document.getElementById("questionAnswer").style.transform = "translate(224px, 0px)";
+                                    document.getElementById("credentialsForgot").style.opacity = "1";
+                                    changeText((document.getElementById("questionAnswer")), "", "0");
+                                }
+
+                            )
+
+                        );
+
+
+                        repeats = repeats + 1;
+
+                    }
+
+
+
+
+                }
+
+
+
+
+
+                function calibrateDisplay()
+                {
+
+                    try
+                    {
+
+                        var multiplier = (((window.innerHeight) * (window.devicePixelRatio)) / 990);
+
+
+                        if (multiplier < 1)
+                        {
+                            multiplier = 1;
+                        }
+                        else if (multiplier >= 1)
+                        {
+                            multiplier = multiplier;
+                        }
+
+                        document.body.style.transform = ("scale" + "(" + (String((1 / (window.devicePixelRatio)) * multiplier)) + ")");
+                        document.body.style.transformOrigin = "0 0";
+                        document.body.style.width = ((String(((window.innerWidth) * (window.devicePixelRatio)) * multiplier)) + "px");
+                        document.body.style.height = ((String(((window.innerHeight) * (window.devicePixelRatio)) * multiplier)) + "px");
+
+                    }
+                    catch (error)
+                    {
+                    }
+
+                }
+
+
+                async function repaintDisplay()
+                {
+
+                    document.body.style.display = "none";
+
+                    await sleep(9);
+
+                    document.body.style.offsetHeight;
+
+                    await sleep(9);
+
+                    document.body.style.display = "block";
+
+                }
+
+
+
+
+
+                function moveBackground(event)
+                {
+
+
+                    if (((performance.now()) - mouseLastMoved) < 167)
+                    {
+                    }
+                    else if (((performance.now()) - mouseLastMoved) >= 167)
+                    {
+
+                        var imagePositionX = (-1 * ((event.clientX) / ((window.innerWidth) / 64)));
+                        var imagePositionY = (-1 * ((event.clientY) / ((window.innerWidth) / 64)));
+                        document.getElementById("background").style.transform = (("translate" + "(" + imagePositionX + "px" + "," + imagePositionY + "px" + ")") + " " + ("translate(0%, -8%)"));
+
+                        mouseLastMoved = performance.now();
+
+                    }
+
+                }
+
+
+
+
+                async function findCachedItem(name, source, format, depth = 0, options = null, pure = false)
+                {
+
+                    var largePiscesCache = await caches.open("piscesLarge");
+                    var cachedItem = await largePiscesCache.match(name);
+
+
+
+                    if (cachedItem == undefined)
+                    {
+
+                        console.log("caching");
+
+                        var itemRequest = null;
+
+
+                        if (options == null)
+                        {
+                            itemRequest = await fetch(source);
+                        }
+                        else if (options != null)
+                        {
+
+                            if (pure == true)
+                            {
+                                itemRequest = await fetch(source, options);
+
+
+                                var itemResponseStatus = await (itemRequest.status);
+                                var itemResponseText = await (itemRequest.text());
+
+                                if (itemResponseStatus == 200)
+                                {
+
+                                    if (itemResponseText == "INVALID")
+                                    {
+                                        return "ERROR";
+                                    }
+                                    else if (itemResponseText != "INVALID")
+                                    {
+
+                                        largePiscesCache.put(name, (new Response(itemResponseText)));
+
+                                        return itemResponseText;
+
+                                    }
+
+                                }
+                                else if (itemResponseStatus != 200)
+                                {
+                                    return "ERROR";
+                                }
+
+
+
+
+                            }
+                            else if (pure == false)
+                            {
+                                itemRequest = await fetch(source, options);
+                            }
+
+                        }
+
+
+                        var itemResponseStatus = await (itemRequest.status);
+                        var itemResponseBlob = await (itemRequest.blob());
+
+                        if (itemResponseStatus == 200)
+                        {
+
+                            var itemResponseBase64 = "";
+
+
+
+                            var fileReader = new FileReader();
+
+                            fileReader.onloadend = 
+                            function()
+                            {
+                                itemResponseBase64 = (fileReader.result);
+                            };
+
+                            await fileReader.readAsDataURL(itemResponseBlob);
+
+                            await sleep(arbitrarySleepDuration);
+
+
+
+                            itemResponseBase64 = (((itemResponseBase64.substr(0, 128)).replace(/data:.{1,}\/.{1,};base64,/, "")) + (itemResponseBase64.substr(128, )));
+                            itemResponseBase64 = "data" + ":" + format + ";" + "base64" + "," + itemResponseBase64;
+
+                            largePiscesCache.put(name, (new Response(itemResponseBase64)));
+
+                            itemResponseBase64 = "";
+
+                            await sleep(arbitrarySleepDuration);
+
+                            cachedItem = await largePiscesCache.match(name);
+
+                        }
+                        else if (itemResponseStatus != 200)
+                        {
+                            return "ERROR";
+                        }
+                        else
+                        {
+                            throw "Impossible Condition";
+                        }
+
+
+
+
+
+                    }
+                    else if (cachedItem != undefined)
+                    {
+                        cachedItem = cachedItem;
+                    }
+                    else
+                    {
+                        throw "Impossible Condition";
+                    }
+
+
+
+
+
+                    cachedItem = await cachedItem.text();
+
+
+                    if ((cachedItem.length) < 128)
+                    {
+
+                        if (depth <= 1)
+                        {
+                            largePiscesCache.delete(name);
+                            cachedItem = findCachedItem(name, source, format, (depth + 1));
+                        }
+                        else if (depth > 1)
+                        {
+                        }
+
+                    }
+                    else if ((cachedItem.length) >= 128)
+                    {
+                    }
+
+
+
+
+                    return cachedItem;
+
+
+
+                }
+
+
+
+
+
+
+                async function fetchMusic(source)
+                {
+
+                    await sleep(499);
+
+
+
+                    `
+
+                    var largePiscesCache = await caches.open("piscesLarge");
+                    var musicCache = await largePiscesCache.match("backgroundMusic");
+
+
+
+                    if (musicCache == undefined)
+                    {
+
+                        console.log("fetchingMusic");
+
+                        var musicRequest = await fetch(source);
+
+
+
+                        var musicResponseStatus = await (musicRequest.status);
+                        var musicResponseBlob = await (musicRequest.blob());
+
+                        if (musicResponseStatus == 200)
+                        {
+
+                            var musicResponseBase64 = "";
+
+
+
+                            var fileReader = new FileReader();
+
+                            fileReader.onloadend = 
+                            function()
+                            {
+                                musicResponseBase64 = (fileReader.result);
+                            };
+
+                            await fileReader.readAsDataURL(musicResponseBlob);
+
+                            await sleep(arbitrarySleepDuration);
+
+
+
+                            musicResponseBase64 = (((musicResponseBase64.substr(0, 128)).replace(/data:.{1,}\/.{1,};base64,/, "")) + (musicResponseBase64.substr(128, )));
+                            musicResponseBase64 = "data" + ":" + "audio/mpeg" + ";" + "base64" + "," + musicResponseBase64;
+
+                            largePiscesCache.put("backgroundMusic", (new Response(musicResponseBase64)));
+
+                            musicResponseBase64 = "";
+
+                            await sleep(arbitrarySleepDuration);
+
+                            musicCache = await largePiscesCache.match("backgroundMusic");
+
+                        }
+                        else if (musicResponseStatus != 200)
+                        {
+                            return "ERROR";
+                        }
+                        else
+                        {
+                            throw "Impossible Condition";
+                        }
+
+
+
+
+
+                    }
+                    else if (musicCache != undefined)
+                    {
+                        musicCache = musicCache;
+                    }
+                    else
+                    {
+                        throw "Impossible Condition";
+                    }
+
+
+
+
+
+                    musicCache = await musicCache.text();
+
+
+
+                    `;
+
+
+                    var musicCache = await findCachedItem("loginBackgroundMusic", source, "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true);
+
+
+
+
+                    ((document.getElementById("backgroundSound").children)[0]).setAttribute("src", musicCache);
+
+
+                    document.getElementById("backgroundSound").load();
+
+
+
+
+
+
+
+
+                    async function startMusic()
+                    {
+
+                        document.removeEventListener("mousedown", startMusic);
+
+                        var musicPosition = localStorage.getItem("musicPosition");
+
+
+                        musicPlaying = false;
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
+
+                        toggleMusic();
+
+
+
+
+
+                        window.addEventListener
+                        (
+
+                            "blur",
+                            (
+
+                                function()
+                                {
+
+                                    musicPlaying = true;
+                                    toggleMusic();
+
+                                }
+
+                            )
+
+                        );
+
+
+                        window.addEventListener
+                        (
+
+                            "focus",
+                            (
+
+                                function()
+                                {
+
+                                    musicPlaying = false;
+                                    toggleMusic();
+
+                                }
+
+                            )
+
+                        );
+
+
+
+
+
+
+                    }
+
+
+
+                    document.addEventListener("mousedown", startMusic);
+
+
+
+                }
+
+
+
+
+
+
+
+                async function toggleMusic()
+                {
+
+
+
+                    if (musicPlaying == true)
+                    {
+
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.8);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.6);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.4);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.2);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").pause();
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
+
+
+                        musicPlaying = false;
+
+                    }
+                    else if (musicPlaying == false)
+                    {
+
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
+                        document.getElementById("backgroundSound").play();
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.2);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.4);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.6);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.8);
+                        await sleep(arbitrarySleepDuration);
+                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
+
+
+                        musicPlaying = true;
+
+                    }
+
+
+
+
+                }
+
+
+
+
+
+
+                async function hashString(passedString)
+                {
+
+                    var encoder = new TextEncoder();
+                    var encodedString = encoder.encode(passedString);
+                    var hashBuffer = await crypto.subtle.digest("SHA-256", encodedString);
+                    var hashArray = Array.from(new Uint8Array(hashBuffer));
+                    var hashArrayLength = hashArray.length;
+                    var hashString = "";
+
+                    var repeats = 0;
+                    while (repeats < hashArrayLength)
+                    {
+
+                        hashString = (hashString + (((hashArray[repeats]).toString(16)).padStart(2, "0")));
+                        repeats = repeats + 1;
+
+                    }
+
+                    return hashString;
+
+                }
+
+
+
+
+
+
+
+
+                function checkForEnterKey(event)
+                {
+
+
+
+                    if ((event.key) == "Escape")
+                    {
+                        document.getElementById("documentBody").focus();
+                        return false;
+                    }
+                    else if ((event.key) != "Escape")
+                    {
+
+                        if ((event.key) == "Enter")
+                        {
+                            return true;
+                        }
+                        else if ((event.key) != "Enter")
+                        {
+                            return false;
+                        }
+
+                    }
+
+                }
+
+
+                document.getElementById("credentialsEmailInput").addEventListener
+                (
+
+                    "keyup",
+                    (
+
+                        function(event)
+                        {
+
+                            if ((checkForEnterKey(event)) == true)
+                            {
+                                document.getElementById("credentialsPasswordInput").focus();
+                            }
+                            else if ((checkForEnterKey(event)) == false)
+                            {
+                            }
+
+                        }
+
+                    )
+
+                );
+
+                document.getElementById("credentialsPasswordInput").addEventListener
+                (
+
+                    "keyup",
+                    (
+
+                        function(event)
+                        {
+
+                            if ((checkForEnterKey(event)) == true)
+                            {
+                                document.getElementById("credentialsSubmit").click();
+                            }
+                            else if ((checkForEnterKey(event)) == false)
+                            {
+                            }
+
+                        }
+
+                    )
+
+                );
+
+
+
+
+
+
+
+
+
+
+                async function readCredentials(prehashedCredentials = "")
+                {
+
+
+                    var emailCredential = "";
+                    var passwordCredential = "";
+                    var hashedCredentials = "";
+                    var credentialsValid = true;
+
+
+
+                    if (prehashedCredentials == "")
+                    {
+
+
+                        if (((document.querySelectorAll("input:valid")).length) < 2)
+                        {
+
+                            changeText((document.getElementById("credentialsInputLabel")), "please fill out all fields", "500");
+
+                            await sleep(1999);
+
+                            changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
+
+                            return;
+
+                        }
+                        else if (((document.querySelectorAll("input:valid")).length) >= 2)
+                        {
+
+
+                            emailCredential = ((document.getElementById("credentialsEmailInput").value).trim());
+                            passwordCredential = (document.getElementById("credentialsPasswordInput").value);
+
+
+
+
+                            if ((emailCredential.match(/^\d{9}$/)) == null)
+                            {
+
+                                if ((emailCredential.match(/.{1,64}\..{1,64}@education\.nsw\.gov\.au/)) == null)
+                                {
+                                    changeText((document.getElementById("credentialsInputLabel")), "invalid email/id...", "500");
+                                }
+                                else if ((emailCredential.match(/.{1,64}\..{1,64}@education\.nsw\.gov\.au/)) != null)
+                                {
+                                    changeText((document.getElementById("credentialsInputLabel")), "processing...", "500");
+                                    var credentialsValid = true;
+                                }
+
+                            }
+                            else if ((emailCredential.match(/^\d{9}$/)) != null)
+                            {
+                                emailCredential = (emailCredential + "." + "user" + "@education.nsw.gov.au")
+                                changeText((document.getElementById("credentialsInputLabel")), "processing...", "500");
+                                var credentialsValid = true;
+                            }
+
+
+
+
+                            hashedCredentials = (await hashString(emailCredential + passwordCredential));
+
+                        }
+
+
+                    }
+                    else if (prehashedCredentials != "")
+                    {
+
+                        hashedCredentials = prehashedCredentials;
+
+                    }
+
+
+
+
+
+                    if (credentialsValid == true)
+                    {
+
+                        var dataFetched = 0;
+                        var requiredFetches = -1;
+
+
+                        function tryToRedirect(addToCount = true)
+                        {
+
+                            if (addToCount == true)
+                            {
+                                requiredFetches = requiredFetches + 1;
+                            }
+                            else if (addToCount == false)
+                            {
+
+
+                                if (dataFetched >= requiredFetches)
+                                {
+
+                                    dataFetched = dataFetched + 1;
+
+                                    changeText((document.getElementById("credentialsInputLabel")), "redirecting...", "0");
+
+
+
+
+                                    if (localSourcesMode == true)
+                                    {
+                                        location.assign("http://localhost:49374/mynsb.html");
+                                    }
+                                    else if (localSourcesMode == false)
+                                    {
+
+                                        if (electronMode == true)
+                                        {
+                                            location.assign((window.location.href).replace(/\/[^/]{1,}$/, ("/" + "mynsb.html")));
+                                        }
+                                        else if (electronMode == false)
+                                        {
+                                            location.assign(file);
+                                        }
+
+                                    }
+
+
+
+                                }
+                                else if (dataFetched < requiredFetches)
+                                {
+
+                                    dataFetched = dataFetched + 1;
+
+                                }
+
+
+                            }
+
+
+                        }
+
+
+
+                        tryToRedirect(true);
+                        fetch(("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" + "?" + "credentialHash" + "=" + hashedCredentials + "&" + "email" + "=" + emailCredential + "&" + "password" + "=" + passwordCredential + "&" + "reason" + "=" + "authentication"), {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true})
+                        .then
+                        (
+
+                            async function (credentialRequest)
+                            {
+
+                                var credentialResponseStatus = await (credentialRequest.status);
+                                var credentialsValid = await (credentialRequest.text());
+
+
+                                if (credentialResponseStatus == 200)
+                                {
+
+                                    if (credentialsValid == "INVALID")
+                                    {
+                                        changeText((document.getElementById("credentialsInputLabel")), "invalid credentials!", "500");
+                                        document.getElementById("credentialsPasswordInput").value = "";
+                                        document.getElementById("credentialsPasswordInput").focus();
+                                    }
+                                    else if (credentialsValid != "INVALID")
+                                    {
+
+                                        changeText((document.getElementById("credentialsInputLabel")), "valid credentials, loading data...", "500");
+
+                                        var token = credentialsValid;
+                                        file = ("mynsb.html");
+
+                                        localStorage.setItem("token", token);
+                                        localStorage.setItem("credentials", hashedCredentials);
+
+
+                                    }
+
+                                }
+                                else if (credentialResponseStatus != 200)
+                                {
+                                    changeText((document.getElementById("credentialsInputLabel")), "an error occured", "500");
+                                }
+
+
+                                tryToRedirect(false);
+
+                            }
+
+                        );
+
+
+
+                        tryToRedirect(true);
+                        fetch(("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" + "?" + "credentialHash" + "=" + hashedCredentials + "&" + "reason" + "=" + "metadata"), {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true})
+                        .then
+                        (
+
+                            async function (metadataRequest)
+                            {
+
+
+                                var metadataResponseStatus = await (metadataRequest.status);
+                                var metadataResponse = await (metadataRequest.text());
+
+
+                                if (metadataResponseStatus == 200)
+                                {
+
+                                    if (metadataResponse == "INVALID")
+                                    {
+                                    }
+                                    else if (metadataResponse != "INVALID")
+                                    {
+
+                                        localStorage.setItem("studentMetadata", metadataResponse);
+
+                                    }
+
+                                }
+                                else if (credentialResponseStatus != 200)
+                                {
+                                }
+
+
+                                tryToRedirect(false);
+
+                            }
+
+                        );
+
+
+                    }
+                    else if (credentialsValid == false)
+                    {
+                    }
+
+
+
+
+                }
+
+
+                async function forgotCredentials()
+                {
+
+                    changeText((document.getElementById("credentialsInputLabel")), "recovery options are currently unavailable", "500");
+
+                    await sleep(1999);
+
+                    changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
+
+                }
+
+
+
+
+
+                async function addSources()
+                {
+
+                    document.getElementById("siteLogo").setAttribute("src", "https://shardowyt.gitlab.io/pisces/mobilise-scare-daunting-error/assets/icons/curvedflame.html");
+
+
+                    findCachedItem("gitlabIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=gitlab.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        function (gitlabIconCache)
+                        {
+                            document.getElementById("gitlabIcon").setAttribute("src", gitlabIconCache);
+                        }
+
+                    );
+
+
+                    findCachedItem("discordIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=discord.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        function (discordIconCache)
+                        {
+                            document.getElementById("discordIcon").setAttribute("src", discordIconCache);
+                        }
+
+                    );
+
+
+
+
+                    findCachedItem("FluentSystemIcons", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        async function (fluentSystemIconsCache)
+                        {
+                            
+                            var fluentSystemIconsFont = new FontFace("FluentSystemIcons", ("url" + "(" + fluentSystemIconsCache + ")" + "" + "format" + "(" + "\"truetype\"" + ")"), {});
+                            document.fonts.add(fluentSystemIconsFont);
+                            await fluentSystemIconsFont.load();
+
+                        }
+
+                    );
+
+
+                    findCachedItem("JetBrains Mono NL", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=jetbrainsMono.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        async function (jetbrainsMonoCache)
+                        {
+
+                            var jetbrainsMonoFont = new FontFace("JetBrains Mono NL", ("url" + "(" + jetbrainsMonoCache + ")" + "" + "format" + "(" + "\"woff2\"" + ")"), {"style": "normal", "weight": "normal"});
+                            await jetbrainsMonoFont.load();
+                            document.fonts.add(jetbrainsMonoFont);
+
+                        }
+
+                    );
+
+
+
+                    
+                    
+
+
+
+
+
+
+
+                    console.log("%cwelcome to pisces\n// idk what to write here", "color: #80C000; font-size: 36px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;", "color: #FFFFFF; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
+                    console.log("%cwelcome to pisces", "background-image: url(https://shardowyt.gitlab.io/pisces/mobilise-scare-daunting-error/assets/icons/staticanimatedfalcon.svg); background-size: cover; padding-top: 288px; padding-bottom: 224px; padding-left: 288px; padding-right: 224px; color: #80C000; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
+
+                }
+
+
+
+                async function addLocalSources()
+                {
+
+                    document.getElementById("siteLogo").setAttribute("src", "assets/icons/curvedflame.html");
+
+
+
+
+                    findCachedItem("gitlabIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=gitlab.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        function (gitlabIconCache)
+                        {
+                            document.getElementById("gitlabIcon").setAttribute("src", gitlabIconCache);
+                        }
+
+                    );
+
+
+                    findCachedItem("discordIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=discord.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        function (discordIconCache)
+                        {
+                            document.getElementById("discordIcon").setAttribute("src", discordIconCache);
+                        }
+
+                    );
+
+
+
+
+
+
+
+                    findCachedItem("FluentSystemIcons", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        async function (fluentSystemIconsCache)
+                        {
+                            
+                            var fluentSystemIconsFont = new FontFace("FluentSystemIcons", ("url" + "(" + fluentSystemIconsCache + ")" + "" + "format" + "(" + "\"truetype\"" + ")"), {});
+                            document.fonts.add(fluentSystemIconsFont);
+                            await fluentSystemIconsFont.load();
+
+                        }
+
+                    );
+
+
+                    findCachedItem("JetBrains Mono NL", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=jetbrainsMono.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
+                    .then
+                    (
+
+                        async function (jetbrainsMonoCache)
+                        {
+
+                            var jetbrainsMonoFont = new FontFace("JetBrains Mono NL", ("url" + "(" + jetbrainsMonoCache + ")" + "" + "format" + "(" + "\"woff2\"" + ")"), {"style": "normal", "weight": "normal"});
+                            await jetbrainsMonoFont.load();
+                            document.fonts.add(jetbrainsMonoFont);
+
+                        }
+
+                    );
+
+
+
+
+
+
+
+                    // console.log("%cwelcome to pisces\n%cidk what to write here", "color: #80C000; font-size: 36px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;", "color: #FFFFFF; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
+                    // console.log("%cwelcome to pisces", "background-image: url(https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/icons/falcon.svg); background-size: cover; padding-top: 288px; padding-bottom: 224px; padding-left: 288px; padding-right: 224px; color: #80C000; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
+
+                }
+
+
+
+
+
+
+                var electronMode = false;
+
+
+                var localSourcesMode = null;
+
+                if ((location.origin) == "https://shardowyt.gitlab.io")
+                {
+                    localSourcesMode = false;
+                }
+                else if ((location.origin) == "http://localhost:49374")
+                {
+                    localSourcesMode = true;
+                }
+                else if (((location.origin) != "https://shardowyt.gitlab.io") && ((location.origin) != "http://localhost:49374"))
+                {
+                    localSourcesMode = false;
+                }
+
+
+
+
+
+
+
+                var file = null;
+
+
+
+
+
+                var mouseLastMoved = performance.now();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                if ((localStorage.getItem("credentials")) == null)
+                {
+                }
+                else if ((localStorage.getItem("credentials")) != null)
+                {
+                    readCredentials(localStorage.getItem("credentials"));
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                await sleep(99);
+
+                await repaintDisplay();
+
+                await sleep(9);
+
+                calibrateDisplay();
+
+                await sleep(9);
+
+                await repaintDisplay();
+
+                await sleep(99);
+
+
+
+
+
+                if (localSourcesMode == true)
+                {
+                    addLocalSources();
+                }
+                else if (localSourcesMode == false)
+                {
+                    addSources();
+                }
+
+
+
+                document.getElementById("credentialsDisplayGridContainer").style.left = "0px";
+                document.getElementById("credentialsGradient").style.left = "0px";
+
+                document.getElementById("background").style.opacity = "0.1667";
+
+
+
+                window.addEventListener("resize", calibrateDisplay);
+                window.addEventListener("blur", repaintDisplay);
+
+
+
+                createQuestions();
+
+
+
+
+
+                document.getElementById("credentialsSubmit").addEventListener
+                (
+
+                    "click",
+                    (
+
+                        function()
+                        {
+                            readCredentials();
+                        }
+
+                    )
+
+                );
+
+
+
+
+
+                document.getElementById("credentialsForgot").addEventListener("click", forgotCredentials);
+
+
+
+
+
+
+
+
+                var arbitrarySleepDurationShort = 9;
+                var arbitrarySleepDuration = 99;
+                var arbitrarySleepDurationLong = 999;
+
+                var backgroundSoundVolume = 0.0417;
+
+                fetchMusic("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=lazerBeam.txt");
+
+
+
+
+
+
+
+                await sleep(499);
+
+
+                changeText((document.getElementById("welcomeTitle")), "welcome to", "500");
+
+                await sleep(499);
+
+                var siteNumber = (Math.floor((Math.random()) * 128));
+
+                if (siteNumber == 0)
+                {
+                    changeText((document.getElementById("siteTitle")), "potato_", "500");
+                }
+                else if (siteNumber != 0)
+                {
+                    changeText((document.getElementById("siteTitle")), "pisces_", "500");
+                }
+
+                await sleep(499);
+
+                changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
+
+                document.getElementById("credentialsEmailInput").style.width = "448px";
+
+                document.getElementById("siteLogo").style.transform = "translate(25%, 50%) scale(1.5)";
+
+                document.addEventListener("mousemove", moveBackground);
+
+
+                await sleep(299);
+
+                document.getElementById("credentialsEmailInput").focus();
+                document.getElementById("credentialsPasswordInput").style.width = "448px";
+                document.getElementById("socialMediaContainer").style.transform = "translate(50%, 150%)";
+
+                await sleep(199);
+
+                changeText((document.getElementById("conceptText")), "concept by visions.", "1000");
+
+                await sleep(1499);
+
+                changeText((document.getElementById("designText")), "designed by shardow.", "1000");
+
+                await sleep(9);
+
+                calibrateDisplay();
+
+                await sleep(9);
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+            login();
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+        <noscript>
+
+            <div id="noJsContainer">
+                <div class="defaultFont" id="noJsTitle">JavaScript is disabled</div>
+                <div class="defaultFont" id="noJsSubtitle">javascript is required for this site to function</div>
+            </div>
+
+        </noscript>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>
