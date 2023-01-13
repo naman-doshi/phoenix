@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Pisces Beta" />
     <meta name="theme-color" content="#242424" />
-    <meta
+    <meta125
       name="robots"
       content="noindex, nofollow, noimageindex, noarchive, nosnippet"
     />
@@ -2078,20 +2078,22 @@
           </div></label
         >
       </div>
-      <div id="logoutbutton" onclick="console.log('hi');">
-        <svg
-          width="36"
-          height="36"
-          fill="none"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          id="logouticon"
-        >
-          <path
-            d="M21.25 4a.75.75 0 0 1 .75.75v6.5A3.75 3.75 0 0 1 18.25 15H4.586l3.72 3.72a.75.75 0 0 1 .072.976l-.073.084a.75.75 0 0 1-.976.073l-.084-.073-5-5a.75.75 0 0 1-.073-.976l.073-.084 5-5a.75.75 0 0 1 1.133.976l-.073.084-3.72 3.72H18.25a2.25 2.25 0 0 0 2.245-2.096l.005-.154v-6.5a.75.75 0 0 1 .75-.75Z"
-            fill="#606266"
-          />
-        </svg>
+      <div class="logoutcontainer">
+        <div id="logoutbutton" onclick="console.log('hi');">
+          <svg
+            width="36"
+            height="36"
+            fill="none"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21.25 4a.75.75 0 0 1 .75.75v6.5A3.75 3.75 0 0 1 18.25 15H4.586l3.72 3.72a.75.75 0 0 1 .072.976l-.073.084a.75.75 0 0 1-.976.073l-.084-.073-5-5a.75.75 0 0 1-.073-.976l.073-.084 5-5a.75.75 0 0 1 1.133.976l-.073.084-3.72 3.72H18.25a2.25 2.25 0 0 0 2.245-2.096l.005-.154v-6.5a.75.75 0 0 1 .75-.75Z"
+              id="logouticon"
+              fill="#606266"
+            />
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -9638,11 +9640,11 @@
                 String(parseInt(gridData.split(" / ")[0]) * 120 - 120) +
                 "px" +
                 ")";
-              document.getElementById("highlightIndent").style.height = "24px";
+              document.getElementById("highlightIndent").style.height = "32px";
 
               sleep(249).then(function () {
                 document.getElementById("highlightIndent").style.height =
-                  "32px";
+                  "40px";
               });
 
               await sleep(1);

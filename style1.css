@@ -2903,15 +2903,32 @@ iframe {
   white-space: nowrap;
 }
 
+.logoutcontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #logoutbutton {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  transition-duration: 0.2s;
 }
 
-#logouticon:hover path {
-  fill: #002645;
+#logoutbutton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.05);
+}
+
+#logoutbutton:hover #logouticon {
+  fill: #da4154;
 }
 
 #synchroniseDisplayGrid {
