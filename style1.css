@@ -726,7 +726,7 @@ iframe {
   left: -5px;
   right: auto;
   width: 4px;
-  height: 32px;
+  height: 44px;
   margin: var(--smallMargin);
   background: #002645;
   border-radius: var(--noBorder) var(--smallBorder) var(--smallBorder)
