@@ -24,7 +24,6 @@
     <link rel="apple-touch-icon" href="assets/icons/snail.png" />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="stylesheet" href="style1.css" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <style type="text/css">
@@ -420,6 +419,45 @@
       <div class="defaultFont hugeText errorCentreText">loading...</div>
 
       <span class="loadingMark"></span>
+    </div>
+
+    <div class="fullscreenErrorContainer" id="logoutSelection">
+      <div class="logoutParent">
+        <div class="defaultFont widgetTitle" id="logoutTitle">
+          Sign out from Project Phoenix?
+        </div>
+        <div class="choicesContainer">
+          <div class="signoutContainer" onclick='
+          localStorage.removeItem("token");
+          localStorage.removeItem("credentials");
+
+          localStorage.removeItem("studentMetadata");
+          localStorage.removeItem("studentCalendar");
+          localStorage.removeItem("studentNewCalendar");
+          localStorage.removeItem("nsbVersion");
+          localStorage.removeItem("countdownVersion");
+          localStorage.removeItem("notepadVersion");
+          localStorage.removeItem("musicPosition");
+          localStorage.removeItem("ignoreZoom");
+          localStorage.removeItem("weekEpoch");
+          localStorage.removeItem("settingsVersion");
+          localStorage.removeItem("piscesLargeCacheTimes");
+          localStorage.removeItem("piscesSettings");
+          localStorage.removeItem("notepadNotes");
+
+          location.assign(
+              window.location.href.replace("mynsb.html", "index.html")
+            );
+          ''>Yes, sign out</div>
+          <div
+            class="cancelContainer"
+            onclick="document.getElementById('logoutSelection').style.display =
+          'none';document.getElementById('logoutSelection').style.opacity = '0';"
+          >
+            Cancel
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="fullscreenErrorContainer" id="screenScalingContainer">
@@ -2079,7 +2117,11 @@
         >
       </div>
       <div class="logoutcontainer">
-        <div id="logoutbutton" onclick="console.log('hi');">
+        <div
+          id="logoutbutton"
+          onclick="document.getElementById('logoutSelection').style.display =
+        'flex';document.getElementById('logoutSelection').style.opacity = '1';"
+        >
           <svg
             width="36"
             height="36"
@@ -3681,48 +3723,6 @@
 
         async function addSources() {
           findCachedItem(
-            "Segoe UI Variable",
-            "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=segoeuivariable.txt",
-            "text/plain",
-            {
-              method: "GET",
-              mode: "cors",
-              headers: { "Content-Type": "text/plain" },
-              keepalive: true,
-            },
-            true
-          ).then(async function (segoeUiVariableCache) {
-            var newStyleElement = document.createElementNS(
-              "http://www.w3.org/1999/xhtml",
-              "style"
-            );
-            newStyleElement.innerHTML =
-              "@font-face" +
-              "\n" +
-              "{" +
-              "\n" +
-              '    font-family: "Segoe UI Variable";' +
-              "\n" +
-              "    font-style: normal;" +
-              "\n" +
-              "    font-weight: normal;" +
-              "\n" +
-              "    src: " +
-              ("url" +
-                "(" +
-                segoeUiVariableCache +
-                ")" +
-                " " +
-                "format" +
-                "(" +
-                '"woff2"' +
-                ")") +
-              "\n" +
-              "}";
-            document.head.appendChild(newStyleElement);
-          });
-
-          findCachedItem(
             "FluentSystemIcons",
             "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt",
             "text/plain",
@@ -4221,48 +4221,6 @@
         }
 
         async function addLocalSources() {
-          findCachedItem(
-            "Segoe UI Variable",
-            "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=segoeuivariable.txt",
-            "text/plain",
-            {
-              method: "GET",
-              mode: "cors",
-              headers: { "Content-Type": "text/plain" },
-              keepalive: true,
-            },
-            true
-          ).then(async function (segoeUiVariableCache) {
-            var newStyleElement = document.createElementNS(
-              "http://www.w3.org/1999/xhtml",
-              "style"
-            );
-            newStyleElement.innerHTML =
-              "@font-face" +
-              "\n" +
-              "{" +
-              "\n" +
-              '    font-family: "Segoe UI Variable";' +
-              "\n" +
-              "    font-style: normal;" +
-              "\n" +
-              "    font-weight: normal;" +
-              "\n" +
-              "    src: " +
-              ("url" +
-                "(" +
-                segoeUiVariableCache +
-                ")" +
-                " " +
-                "format" +
-                "(" +
-                '"woff2"' +
-                ")") +
-              "\n" +
-              "}";
-            document.head.appendChild(newStyleElement);
-          });
-
           findCachedItem(
             "FluentSystemIcons",
             "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt",
