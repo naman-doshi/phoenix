@@ -3,7 +3,7 @@
   src: local("Segoe UI Variable Small"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
   font-variation-settings: "opsz" 1;
-  font-weight: 300 700;
+  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
 @font-face {
@@ -11,7 +11,7 @@
   src: local("Segoe UI Variable Text"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
   font-variation-settings: "opsz" 10.5;
-  font-weight: 300 700;
+  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
 @font-face {
@@ -19,7 +19,7 @@
   src: local("Segoe UI Variable Display"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
   font-variation-settings: "opsz" 36;
-  font-weight: 300 700;
+  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
 :root {
@@ -3011,8 +3011,8 @@ iframe {
 
 .signoutContainer:hover {
   cursor: pointer;
-  background: rgb(0, 0, 0, 0.05);
-  color: #002645;
+  background: #da4154;
+  color: white;
 }
 
 .cancelContainer {
@@ -3575,10 +3575,6 @@ iframe {
     var(--smallBorder);
   transition-duration: 0.3333s;
   transform: translate(10px, 0%);
-}
-
-.contentsItemDisplayContainer:hover {
-  transform: translate(10px, 10%);
 }
 
 .contentsItemDisplayContainer:hover > * {
