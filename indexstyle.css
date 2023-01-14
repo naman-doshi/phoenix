@@ -58,6 +58,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-box {
@@ -78,6 +80,7 @@ body {
   font-size: 7rem;
   line-height: 9.3rem;
   color: #002645;
+  text-align: center;
 }
 
 .hero-subtext {
@@ -87,6 +90,7 @@ body {
   font-size: 3rem;
   line-height: 4rem;
   color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 .hero-button {
@@ -103,6 +107,14 @@ body {
   font-size: 2.8rem;
   line-height: 3.7rem;
   color: #ffffff;
+  text-align: center;
+  transition-duration: 0.2s;
+}
+
+.hero-button:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  color: #002645;
 }
 
 .container {
@@ -126,4 +138,64 @@ body {
   margin: 0 auto;
   margin-top: auto;
   margin-bottom: 33px;
+}
+
+/* GRADIENT CIRCLES */
+.gradient-circle1 {
+  position: absolute;
+  width: 671px;
+  height: 671px;
+  left: -9.69%;
+  bottom: 13%;
+
+  background: rgba(255, 238, 213, 0.4);
+  filter: blur(125px);
+  border-radius: 10000px;
+}
+
+.gradient-circle2 {
+  position: absolute;
+  width: 671px;
+  height: 671px;
+  right: -7.88%;
+  top: 10%;
+
+  background: rgba(200, 228, 255, 0.6);
+  filter: blur(125px);
+  border-radius: 10000px;
+}
+
+.paper {
+  position: absolute;
+  bottom: 45%;
+  left: 5.25%;
+  filter: blur(3px);
+}
+
+.books {
+  position: absolute;
+  bottom: 31%;
+  left: 10.46%;
+  filter: blur(3px);
+}
+
+.calendar {
+  right: 15.66%;
+  top: 33.39%;
+  position: absolute;
+  filter: blur(3px);
+}
+
+.apps {
+  right: 6.77%;
+  top: 40%;
+  position: absolute;
+  filter: blur(3px);
+}
+
+.foru {
+  right: 13.32%;
+  top: 48.33%;
+  position: absolute;
+  filter: blur(3px);
 }
