@@ -3577,12 +3577,24 @@ iframe {
   transform: translate(10px, 0%);
 }
 
+.contentsItemDisplayContainer:hover {
+  transform: translate(10px, 10%);
+}
+
 .contentsItemDisplayContainer:hover > * {
   color: #a0a0a0;
 }
 
 .contentsItemDisplayContainer:hover > * > * {
   color: #a0a0a0;
+}
+
+.contentsItemDisplayContainer:hover
+  .contentsItemDisplayIconContainer
+  .contentsItemDisplayIcon
+  svg
+  path {
+  fill: #a0a0a0;
 }
 
 .contentsItemDisplayContainer > * {

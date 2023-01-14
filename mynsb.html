@@ -13145,66 +13145,6 @@
           .addEventListener("click", sendSuggestion);
 
         document
-          .getElementById("logoutbutton")
-          .addEventListener("click", async function () {
-            console.log("clicked");
-          });
-
-        document
-          .getElementById("logoutDisplayGrid")
-          .addEventListener("dblclick", async function () {
-            console.info(
-              "%c" + "Clearing",
-              "font-family: Jetbrains Mono NL, Lucida Console, Consolas, monospace;"
-            );
-            document.getElementById("logoutText").style.color =
-              "var(--redOpaque)";
-            changeText(
-              document.getElementById("logoutText"),
-              "clearing...",
-              "166.6667"
-            );
-            localStorage.removeItem("token");
-            localStorage.removeItem("credentials");
-
-            localStorage.removeItem("studentMetadata");
-            localStorage.removeItem("studentCalendar");
-            localStorage.removeItem("studentNewCalendar");
-            localStorage.removeItem("nsbVersion");
-            localStorage.removeItem("countdownVersion");
-            localStorage.removeItem("notepadVersion");
-            localStorage.removeItem("musicPosition");
-            localStorage.removeItem("ignoreZoom");
-            localStorage.removeItem("weekEpoch");
-            localStorage.removeItem("settingsVersion");
-            localStorage.removeItem("piscesLargeCacheTimes");
-            localStorage.removeItem("piscesSettings");
-            localStorage.removeItem("notepadNotes");
-
-            await caches.delete("piscesLarge");
-            await caches.delete("pisces");
-
-            if (localSourcesMode == true) {
-              location.assign(
-                window.location.href.replace(/\/[^/]{1,}$/, "/" + "mynsb.html")
-              );
-            } else if (localSourcesMode == false) {
-              if (electronMode == true) {
-                location.assign(
-                  window.location.href.replace(
-                    /\/[^/]{1,}$/,
-                    "/" + "mynsb.html"
-                  )
-                );
-              } else if (electronMode == false) {
-                location.assign(
-                  "https://shardowyt.gitlab.io/pisces/mobilise-scare-daunting-error"
-                );
-              }
-            }
-          });
-
-        document
           .getElementById("synchroniseDisplayGrid")
           .addEventListener("click", async function () {
             document.getElementById("synchroniseText").style.color =
@@ -13919,62 +13859,6 @@
       }
 
       var myNsbFunction = myNsb();
-
-      new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          resolve();
-        }, 12000);
-      }).then(function () {
-        console.log(
-          "%ccommands",
-          "color: #80C000; font-size: 36px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cchange((password|nickname), value)\n%cchange(password, "qwerty1234")',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          "%cawait printAnnouncements()\n%c await printAnnouncements();",
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          "%cawait printEvents()\n%c await printEvents();",
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait synthesiseAnnouncement(senderName, senderPicture, recievers, critical, title, body, sent, expires)\n%cawait synthesiseAnnouncement("shardow", "https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/images/avatars/noicon.png", ["phoenix"], false, "hello", "hi i sent this", (((new Date()).getTime()) / 1000), 1700000000);',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait synthesiseEvent(recievers, critical, title, icon, location, time, expires)\n%cawait synthesiseEvent(["yearSeven", "yearEleven", "yearTwelve"], true, "blah", "https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/images/avatars/noicon.png", "NSBHS", [1651000000, 1651070000], 1700000000);',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait modifyAnnouncement(id, [senderName, senderPicture, recievers, critical, title, body, sent, expires])\n%cawait modifyAnnouncement(1651000000000, ["shardow", "https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/images/avatars/noicon.png", ["phoenix"], false, "hello", "hi i sent this", (((new Date()).getTime()) / 1000), 1700000000]);\nawait modifyAnnouncement(1651000000000, "delete");',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait modifyEvent(id, [recievers, critical, title, icon, location, time, expires])\n%cawait modifyEvent(1651000000000, [["yearSeven", "yearEleven", "yearTwelve"], true, "blah", "https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/images/avatars/noicon.png", "NSBHS", [1651000000, 1651070000], 1700000000]);\nawait modifyEvent(1651000000000, "delete");',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait createLatestMagazine(title, body, button, image, link)\n%ccreateLatestMagazine("November 2021 Edition", "In this month\'s edition, Chris Lin reviews the book", "Read Now", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==", "https://drive.google.com/drive/folders/1GIOROMSMac9rHyn7XD0bJV1j2Vb6YL19");',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-        console.log(
-          '%cawait createPreviousMagazine(date, issue, release, month, year, image, link)\n%ccreatePreviousMagazine("February 2022", "Issue 72", "Released Thu Oct 1 / 2021", "FEB", "2022", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==", "https://drive.google.com/drive/folders/1GIOROMSMac9rHyn7XD0bJV1j2Vb6YL19");',
-          "color: #0080C0; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;",
-          "color: #FFFFFF; font-size: 12px; font-family: Bahnschrift, Segoe UI, Gill Sans, Quicksand, Noto Sans, Helvetica, Arial, sans-serif;"
-        );
-      });
 
       password = "password";
       nickname = "nickname";
