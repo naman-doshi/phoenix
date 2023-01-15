@@ -1,2472 +1,510 @@
-<!--SHArdow-->
-
-<!doctype html>
-<html lang="en" id="documentRoot">
-
-    <head>
-
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <meta name="description" content="A site by SHArdow for 'pisces_' releases...">
-        <meta name="theme-color" content="#242424">
-        <meta name="robots" content="noindex, nofollow, noimageindex, noarchive, nosnippet">
-        <meta name="author" content="shardow">
-        <meta name="og:title" content="pisces_">
-        <meta name="og:description" content="A site by SHArdow for 'pisces_' releases...">
-        <meta name="og:image" content="https://shardowyt.gitlab.io/pisces/assets/icons/superlargesnail.png">
-        <meta name="og:url" content="https://shardowyt.gitlab.io/pisces/">
-        <meta name="og:type" content="website">
-        <title>pisces_ login</title>
-        <link rel="icon" href="snail.png">
-        <link rel="apple-touch-icon" href="snail.png">
-        <link rel="manifest" href="manifest.webmanifest">
-        <link rel="stylesheet" href="indexstyle.css" />
-
-
-        <style>
-
-
-
-
-            @font-face
-            {
-                font-family: "JetBrains Mono NL";
-                font-style: normal;
-                font-weight: normal;
-                license: "https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt";
-            }
-
-
-
-            .defaultFont
-            {
-                font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;
-                color: #FFFFFFE0;
-            }
-
-            .monospaceFont
-            {
-                font-family: Jetbrains Mono NL, Lucida Console, Consolas, monospace;
-                color: #FFFFFFE0;
-            }
-
-
-
-
-
-
-
-
-
-            #documentRoot
-            {
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(225deg, #202024, #101016);
-            }
-
-
-
-            #documentBody
-            {
-                background: linear-gradient(225deg, #202024, #101016);
-                overflow: hidden;
-                user-select: none;
-                margin: 0.0800px;
-                width: 100vw;
-                height: 100vh;
-                cursor: crosshair;
-            }
-
-
-
-
-
-
-
-
-            #background
-            {
-                position: absolute;
-                width: 120%;
-                height: auto;
-                opacity: 0;
-                transform: translate(0%, -8%);
-                transition-duration: 1s;
-                pointer-events: none;
-            }
-
-
-
-
-
-
-
-
-            .hexagonPatternPath
-            {
-                fill: none;
-                stroke: #FFFFFF;
-                stroke-width: 16px;
-                stroke-miterlimit: 1;
-                stroke-linejoin: round;
-            }
-
-
-
-
-            #hexagonTileSvg
-            {
-                position: absolute;
-                display: inline-block;
-                opacity: 0.0167;
-                margin: 0;
-                transform: translate(0px, -44px);
-                pointer-events: none;
-            }
-
-
-
-
-
-
-
-            #credentialsGradient
-            {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: auto;
-                bottom: auto;
-                left: calc(-576px - 64px);
-                right: auto;
-                background: linear-gradient(90deg, #00000000 0px, #00000000 640px, #00000080 640px, #00000060 768px, #00000000 1024px);
-                /* border-radius: 0px 64px 64px 0px; */
-                pointer-events: none;
-
-                transition-duration: 0.5s;
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-            #credentialsDisplayGridContainer
-            {
-
-                position: absolute;
-                width: 576px;
-                height: 100%;
-                top: auto;
-                bottom: auto;
-                left: calc(-576px - 64px);
-                right: auto;
-
-                background-color: #00000080;
-                /* border: 0.8px solid #FFFFFF10; */
-
-                overflow-x: hidden;
-                overflow-y: scroll;
-                transform: rotateY(180deg);
-
-                padding-top: 0px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 64px;
-
-
-                transition-duration: 0.5s;
-
-            }
-
-
-            #credentialsDisplayGridContainer::-webkit-scrollbar
-            {
-                width: 16px;
-            }
-            #credentialsDisplayGridContainer::-webkit-scrollbar-track
-            {
-                display: none;
-            }
-            #credentialsDisplayGridContainer::-webkit-scrollbar-corner
-            {
-                display: none;
-            }
-            #credentialsDisplayGridContainer::-webkit-scrollbar-thumb
-            {
-                display: block;
-                background: #FFFFFFE0;
-                border-radius: 8px;
-            }
-
-
-
-
-
-
-            #credentialsDisplayGrid
-            {
-
-                display: grid;
-                width: 100%;
-                height: 100%;
-
-                grid-template-columns: 1fr;
-                grid-template-rows: minmax(0px, 192px) 64px 128px 36px 48px 64px 96px 1fr 24px 24px 64px;
-
-                transform: rotateY(-180deg);
-
-                padding-top: 0px;
-                padding-bottom: 0px;
-                padding-left: 64px;
-                padding-right: 0px;
-
-            }
-
-
-
-
-
-
-
-
-            #siteIconsContainer
-            {
-                display: grid;
-                overflow: hidden;
-                width: 100%;
-                height: 100%;
-                grid-template-columns: 100%;
-                grid-template-rows: 100%;
-                grid-area: 1 / 1 / span 1 / span 1;
-                mask-image: linear-gradient(180deg, #FFFFFFFF 0%, #FFFFFFFF 80%, #FFFFFF00 100%);
-                -webkit-mask-image: linear-gradient(180deg, #FFFFFFFF 0%, #FFFFFFFF 80%, #FFFFFF00 100%);
-            }
-
-
-
-
-
-            #siteLogo
-            {
-                width: 100%;
-                height: auto;
-                overflow: hidden;
-                border: none;
-                transform: translate(25%, -100%) scale(1.5);
-                transition-duration: 0.5s;
-                grid-area: 1 / 1 / span 1 / span 1;
-            }
-
-
-
-
-
-
-
-
-
-            #socialMediaContainer
-            {
-                display: grid;
-                width: 256px;
-                height: 64px;
-                overflow: visible;
-                grid-area: 1 / 1 / span 1 / span 1;
-                grid-template-columns: repeat(auto-fill, 64px);
-                grid-template-rows: 100%;
-                row-gap: 8px;
-                column-gap: 8px;
-                transform: translate(50%, -100%);
-                transition-duration: 0.1667s;
-
-            }
-
-            #socialMediaContainer > *
-            {
-                justify-content: center;
-                text-align: center;
-                cursor: pointer;
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-            .socialMediaLink
-            {
-
-                width: 64px;
-                height: 64px;
-                overflow: visible;
-
-
-
-                background-image: linear-gradient(70deg, #FFFFFF20 0%, #FFFFFF20 48%, #FFFFFFA0 48.5%, #FFFFFFA0 50%, #FFFFFFA0 51.5%, #FFFFFF10 52%, #FFFFFF10 100%);
-                background-size: 250%;
-                background-repeat: no-repeat;
-                background-position: 100%;
-
-                border-radius: 24px;
-
-                transition-duration: 0.2s;
-                transition-timing-function: ease-in-out;
-
-            }
-
-
-
-
-
-            .socialMediaLink:hover
-            {
-                background-position: 0%;
-                transform: scale(1.1024);
-            }
-
-
-
-
-
-            .socialMediaLinkIcon
-            {
-
-                display: inline;
-
-                width: auto;
-                height: 48px;
-
-                padding-top: 8px;
-                padding-bottom: 8px;
-                padding-left: auto;
-                padding-right: auto;
-
-                filter: saturate(1);
-
-                transition-duration: 0.2s;
-
-
-
-            }
-
-
-
-
-            .socialMediaLinkIcon:hover
-            {
-                transform: scale(1.1042);
-                filter: saturate(0.8);
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            #welcomeTitle
-            {
-                z-index: 1;
-                font-size: 64px;
-                transition-duration: 0.1667s;
-
-                background: linear-gradient(120deg, #00A0C0 0%, #0060C0 100%);
-                background-clip: text;
-                text-fill-color: #00000000;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: #00000000;
-                background-size: 300% auto;
-
-            }
-
-            #welcomeTitle:hover
-            {
-                background-size: 100% auto;
-            }
-
-
-
-
-
-            #siteTitle
-            {
-                z-index: 1;
-                font-size: 72px;
-                font-weight: bold;
-                transition-duration: 0.1667s;
-
-                background: linear-gradient(120deg, #00A0C0 0%, #0060C0 100%);
-                background-clip: text;
-                text-fill-color: #00000000;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: #00000000;
-                background-size: 300% auto;
-
-            }
-
-            #siteTitle:hover
-            {
-                background-size: 100% auto;
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            #credentialsInputLabel
-            {
-                font-size: 24px;
-                transition-duration: 0.1667s;
-                cursor: help;
-                color: #E0E0E0E0;
-            }
-
-            #credentialsInputLabel:hover
-            {
-                color: #FFFFFFE0;
-            }
-
-
-
-
-            .credentialsInput
-            {
-                position: relative;
-                width: 0px;
-                height: 32px;
-                background-color: #24242480;
-                color: #FFFFFF;
-                font-size: 20px;
-                outline: none;
-                border: none;
-                border-radius: 16px;
-                border-color: transparent;
-                caret-color: #0080C0;
-                transition-duration: 0.3333s;
-                color-scheme: dark;
-                
-            }
-
-            .credentialsInput:hover
-            {
-                background-color: #242424E0;
-            }
-
-            .credentialsInput:valid
-            {
-                background-color: #242424A0 !important;
-            }
-
-
-
-
-
-
-
-
-
-
-
-            #credentialsButtonsContainer
-            {
-                display: grid;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                grid-template-columns: 50% 50%;
-                grid-template-rows: 100%;
-                justify-content: center;
-                align-items: center;
-            }
-
-
-            .credentialsButton
-            {
-
-                border-color: transparent;
-                font-size: 24px;
-                color: #FFFFFF;
-                width: 192px;
-                height: 48px;
-                border: none;
-                border-radius: 24px;
-                border-color: transparent;
-                outline: none;
-
-
-                background-image: linear-gradient(70deg, #40C000 0%, #80C000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #00A0C0 52%, #0080C0 100%);
-                background-size: 250%;
-                background-repeat: no-repeat;
-                background-position: 100%;
-
-                transition-duration: 0.3333s;
-
-                cursor: pointer;
-
-            }
-
-            .credentialsButton:hover
-            {
-                background-position: 0%;
-            }
-
-
-
-
-            #credentialsSubmit
-            {
-                width: 192px;
-                height: 48px;
-                background-image: linear-gradient(70deg, #40C000 0%, #80C000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #00A0C0 52%, #0080C0 100%);
-            }
-
-            #credentialsForgot
-            {
-                width: 128px;
-                height: 36px;
-                background-image: linear-gradient(70deg, #208000 0%, #40A000 48%, #FFFFFF 48.5%, #FFFFFF 50%, #FFFFFF 51.5%, #002060 52%, #004060 100%);
-                opacity: 0.8;
-            }
-
-
-            #credentialsForgot:hover
-            {
-                opacity: 1;
-            }
-
-
-
-
-
-
-
-            #questionsContainer
-            {
-                display: grid;
-                overflow-x: hidden;
-                overflow-y: scroll;
-                width: 100%;
-                height: 100%;
-                grid-template-columns: 100%;
-                grid-template-rows: 72px repeat(3, 36px);
-            }
-
-
-            #questionsContainer::-webkit-scrollbar
-            {
-                width: 16px;
-            }
-            #questionsContainer::-webkit-scrollbar-track
-            {
-                display: none;
-            }
-            #questionsContainer::-webkit-scrollbar-corner
-            {
-                display: none;
-            }
-            #questionsContainer::-webkit-scrollbar-thumb
-            {
-                display: block;
-                background: #FFFFFFE0;
-                border-radius: 8px;
-            }
-
-
-
-
-
-
-            #questionsContainer > *:nth-child(1)
-            {
-                font-size: 48px;
-                font-weight: normal;
-                color: #00A0C0;
-            }
-
-
-            #questionsContainer > *:nth-child(1):hover
-            {
-
-                color: #0080C0;
-            }
-
-
-            #questionsContainer > *:nth-child(1)::before
-            {
-                content: none;
-            }
-
-
-
-            #questionsContainer > *
-            {
-                overflow: hidden;
-                width: 100%;
-                height: 92%;
-                transform: translate(2px, 0px);
-                font-size: 24px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                font-weight: lighter;
-                transition-duration: 0.1667s;
-                cursor: help;
-            }
-
-            #questionsContainer > *::before
-            {
-                content: "\203B";
-            }
-
-
-
-
-            #questionsContainer > *:hover
-            {
-                color: #0080C0;
-            }
-
-
-
-
-            #questionAnswer
-            {
-
-                display: flex;
-
-                position: absolute;
-                width: 256px;
-                height: 0px;
-                grid-area: 8 / 1 / span 1 / span 1;
-
-                overflow: hidden;
-                justify-content: left;
-                align-items: flex-start;
-                text-align: justify;
-
-                padding: 16px;
-
-                background: #FFFFFFA0;
-                border-radius: 32px;
-                transform: translate(224px, 0px);
-                opacity: 0;
-
-                color: #000000;
-                transition-duration: 0.5s;
-                font-size: 24px;
-                pointer-events: none;
-
-            }
-
-
-
-
-
-
-
-            #conceptText
-            {
-                transition-duration: 0.1667s;
-                cursor: help;
-                color: #606060E0;
-            }
-            #conceptText:hover
-            {
-                color: #808080E0;
-            }
-
-
-
-
-            #designText
-            {
-                transition-duration: 0.1667s;
-                cursor: help;
-                color: #606060E0;
-            }
-            #designText:hover
-            {
-                color: #808080E0;
-            }
-
-
-
-
-
-            #noJsContainer
-            {
-                z-index: 9;
-                position: absolute;
-                display: block;
-                width: 100vw;
-                height: 100vh;
-                top: 0px;
-                bottom: auto;
-                left: 0px;
-                right: auto;
-                justify-content: center;
-                align-items: center;
-                background-color: #24242480;
-            }
-
-
-            #noJsTitle
-            {
-                position: absolute;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-                font-size: 72px;
-                transform: translate(0px, -48px)
-            }
-
-
-            #noJsSubtitle
-            {
-                position: absolute;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-                font-size: 36px;
-                transform: translate(0px, 48px)
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </style>
-
-
-
-    </head>
-
-
-
-
-
-    <body id="documentBody">
-
-
-
-        <img id="background" src="" alt="Background image"></img>
-
-
-
-
-        <audio id="backgroundSound" loop>
-            <source src="" type="audio/mpeg">
-        </audio>
-
-
-
-
-
-
-
-
-        <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150" style="position: absolute;width: 100vh;height: 30.5556vh;transform: rotate(90deg) scaleY(0.25) translate(35vh, 100vw);">
-            <style>
-                .path-0{
-                    animation:pathAnim-0 4s;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.8, minimum-scale=0.8, maximum-scale=0.8"
+    />
+    <title>Login</title>
+    <link rel="stylesheet" href="indexstyle.css" />
+    <link rel="script" href="indexscript.js" />
+    <script>
+      function getCodeBoxElement(index) {
+        return document.getElementById("codeBox" + index);
+      }
+
+      function onKeyUpEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getCodeBoxElement(index).value.length === 1) {
+          if (index !== 9) {
+            getCodeBoxElement(index + 1).focus();
+          } else {
+            getCodeBoxElement(index).blur();
+            // Submit code
+            console.log("submit code ");
+          }
+        }
+        if (eventCode === 8 && index !== 1) {
+          getCodeBoxElement(index - 1).focus();
+        }
+      }
+
+      function onFocusEvent(index) {
+        let text = document.getElementById("one");
+        let box = document.getElementById("idinputdiv");
+        text.style.fontWeight = "600";
+        box.style.border = "2px solid #002645";
+        for (item = 1; item < index; item++) {
+          const currentElement = getCodeBoxElement(item);
+          if (!currentElement.value) {
+            currentElement.focus();
+            break;
+          }
+        }
+      }
+
+      function unfocus() {
+        let text = document.getElementById("one");
+        let box = document.getElementById("idinputdiv");
+        text.style.fontWeight = "400";
+        box.style.border = "1px solid #adafb3";
+      }
+
+      function focusText() {
+        let text = document.getElementById("pwd");
+        let div = document.getElementById("pwd-div");
+        div.style.border = "2px solid #002645";
+        text.style.fontWeight = "600";
+      }
+
+      function unfocusText() {
+        let text = document.getElementById("pwd");
+        let div = document.getElementById("pwd-div");
+
+        div.style.border = "1px solid #adafb3";
+        text.style.fontWeight = "400";
+      }
+
+      function checkForm() {
+        let studentid = "";
+        let i = 1;
+        while (i < 10) {
+          studentid += document.getElementById("codeBox" + i).value;
+          i += 1;
+        }
+        let pwd = document.getElementById("password").value;
+        console.log(studentid);
+        console.log(pwd);
+        return false;
+      }
+
+      function passHero() {
+        document.getElementById("hero-box").style.display = "none";
+        document.getElementById("container2").style.display = "flex";
+      }
+
+      async function hashString(passedString) {
+        var encoder = new TextEncoder();
+        var encodedString = encoder.encode(passedString);
+        var hashBuffer = await crypto.subtle.digest("SHA-256", encodedString);
+        var hashArray = Array.from(new Uint8Array(hashBuffer));
+        var hashArrayLength = hashArray.length;
+        var hashString = "";
+
+        var repeats = 0;
+        while (repeats < hashArrayLength) {
+          hashString =
+            hashString + hashArray[repeats].toString(16).padStart(2, "0");
+          repeats = repeats + 1;
+        }
+
+        return hashString;
+      }
+
+      async function readCredentials() {
+        try {
+          let emailCredential = "";
+          let i = 1;
+          while (i < 10) {
+            emailCredential += document.getElementById("codeBox" + i).value;
+            i += 1;
+          }
+          let passwordCredential = document.getElementById("password").value;
+          console.log(emailCredential);
+          console.log(passwordCredential);
+          var hashedCredentials = "";
+          var credentialsValid = true;
+
+          if (emailCredential.length < 9 || passwordCredential.length < 8) {
+            document.getElementById("btn").classList.add("error");
+          } else {
+            emailCredential =
+              emailCredential + "." + "user" + "@education.nsw.gov.au";
+            var credentialsValid = true;
+          }
+
+          hashedCredentials = await hashString(
+            emailCredential + passwordCredential
+          );
+
+          if (credentialsValid == true) {
+            var dataFetched = 1;
+            var requiredFetches = -1;
+
+            function tryToRedirect(addToCount = true) {
+              if (addToCount == true) {
+                requiredFetches = requiredFetches + 1;
+              } else if (addToCount == false) {
+                if (dataFetched >= requiredFetches) {
+                  dataFetched = dataFetched + 1;
+                  location.assign(
+                    window.location.href.replace("index.html", "mynsb.html")
+                  );
                 }
-                @keyframes pathAnim-0{
-                    0%{
-                    d: path("M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z");
-                    }
-                    25%{
-                    d: path("M 0,400 C 0,400 0,80 0,80 C 93.52153110047843,70.34449760765551 187.04306220095685,60.68899521531101 285,64 C 382.95693779904315,67.31100478468899 485.3492822966508,83.58851674641147 580,94 C 674.6507177033492,104.41148325358853 761.5598086124402,108.95693779904306 868,108 C 974.4401913875598,107.04306220095694 1100.4114832535886,100.58373205741627 1199,95 C 1297.5885167464114,89.41626794258373 1368.7942583732056,84.70813397129186 1440,80 C 1440,80 1440,400 1440,400 Z");
-                    }
-                    50%{
-                    d: path("M 0,400 C 0,400 0,80 0,80 C 82.3732057416268,94.05741626794259 164.7464114832536,108.11483253588517 250,103 C 335.2535885167464,97.88516746411483 423.38755980861254,73.5980861244019 524,63 C 624.6124401913875,52.40191387559809 737.7033492822965,55.49282296650718 844,60 C 950.2966507177035,64.50717703349282 1049.799043062201,70.43062200956938 1148,74 C 1246.200956937799,77.56937799043062 1343.1004784688994,78.7846889952153 1440,80 C 1440,80 1440,400 1440,400 Z");
-                    }
-                    75%{
-                    d: path("M 0,400 C 0,400 0,80 0,80 C 92.56459330143542,68.36363636363636 185.12918660287085,56.72727272727272 292,61 C 398.87081339712915,65.27272727272728 520.0478468899521,85.45454545454547 607,89 C 693.9521531100479,92.54545454545453 746.6794258373207,79.45454545454545 840,77 C 933.3205741626793,74.54545454545455 1067.2344497607655,82.72727272727272 1174,85 C 1280.7655502392345,87.27272727272728 1360.3827751196172,83.63636363636364 1440,80 C 1440,80 1440,400 1440,400 Z");
-                    }
-                    100%{
-                    d: path("M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z");
-                    }
-                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc44"></stop><stop offset="95%" stop-color="#32ded444"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,80 0,80 C 115.65550239234452,70.66028708133972 231.31100478468903,61.32057416267943 325,55 C 418.68899521531097,48.67942583732057 490.4114832535885,45.377990430622006 566,51 C 641.5885167464115,56.622009569377994 721.043062200957,71.16746411483254 828,79 C 934.956937799043,86.83253588516746 1069.4162679425838,87.95215311004783 1176,87 C 1282.5837320574162,86.04784688995217 1361.2918660287082,83.02392344497608 1440,80 C 1440,80 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><style>
-                .path-1{
-                    animation:pathAnim-1 4s;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
-                }
-                @keyframes pathAnim-1{
-                    0%{
-                    d: path("M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z");
-                    }
-                    25%{
-                    d: path("M 0,400 C 0,400 0,160 0,160 C 117.81818181818184,151.22488038277513 235.63636363636368,142.44976076555025 326,138 C 416.3636363636363,133.55023923444975 479.27272727272714,133.42583732057415 556,138 C 632.7272727272729,142.57416267942585 723.2727272727274,151.8468899521531 820,150 C 916.7272727272726,148.1531100478469 1019.6363636363635,135.1866028708134 1124,135 C 1228.3636363636365,134.8133971291866 1334.1818181818182,147.40669856459328 1440,160 C 1440,160 1440,400 1440,400 Z");
-                    }
-                    50%{
-                    d: path("M 0,400 C 0,400 0,160 0,160 C 95.57894736842107,159.83732057416267 191.15789473684214,159.67464114832538 296,156 C 400.84210526315786,152.32535885167462 514.9473684210526,145.13875598086125 606,138 C 697.0526315789474,130.86124401913875 765.0526315789474,123.77033492822969 866,131 C 966.9473684210526,138.2296650717703 1100.842105263158,159.7799043062201 1202,167 C 1303.157894736842,174.2200956937799 1371.578947368421,167.11004784688996 1440,160 C 1440,160 1440,400 1440,400 Z");
-                    }
-                    75%{
-                    d: path("M 0,400 C 0,400 0,160 0,160 C 94.32535885167468,177.71291866028707 188.65071770334936,195.42583732057417 278,188 C 367.34928229665064,180.57416267942583 451.72248803827745,148.00956937799043 544,148 C 636.2775119617226,147.99043062200957 736.4593301435407,180.53588516746413 830,186 C 923.5406698564593,191.46411483253587 1010.4401913875597,169.8468899521531 1111,161 C 1211.5598086124403,152.1531100478469 1325.77990430622,156.07655502392345 1440,160 C 1440,160 1440,400 1440,400 Z");
-                    }
-                    100%{
-                    d: path("M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z");
-                    }
-                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc66"></stop><stop offset="95%" stop-color="#32ded466"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,160 0,160 C 77.70334928229664,165.98086124401914 155.40669856459328,171.96172248803828 259,173 C 362.5933014354067,174.03827751196172 492.07655502392333,170.13397129186603 604,171 C 715.9234449760767,171.86602870813397 810.2870813397129,177.50239234449762 895,169 C 979.7129186602871,160.49760765550238 1054.7751196172248,137.85645933014354 1144,134 C 1233.2248803827752,130.14354066985646 1336.6124401913876,145.07177033492823 1440,160 C 1440,160 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-1"></path><style>
-                .path-2{
-                    animation:pathAnim-2 4s;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
-                }
-                @keyframes pathAnim-2{
-                    0%{
-                    d: path("M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z");
-                    }
-                    25%{
-                    d: path("M 0,400 C 0,400 0,240 0,240 C 79.93301435406698,235.7799043062201 159.86602870813397,231.5598086124402 247,228 C 334.13397129186603,224.4401913875598 428.46889952153117,221.54066985645937 525,232 C 621.5311004784688,242.45933014354063 720.2583732057415,266.2775119617225 830,267 C 939.7416267942585,267.7224880382775 1060.4976076555026,245.34928229665073 1164,237 C 1267.5023923444974,228.65071770334927 1353.7511961722487,234.32535885167465 1440,240 C 1440,240 1440,400 1440,400 Z");
-                    }
-                    50%{
-                    d: path("M 0,400 C 0,400 0,240 0,240 C 108.61244019138758,246.59330143540672 217.22488038277515,253.1866028708134 325,251 C 432.77511961722485,248.8133971291866 539.7129186602871,237.84688995215313 626,236 C 712.2870813397129,234.15311004784687 777.9234449760766,241.42583732057412 854,240 C 930.0765550239234,238.57416267942588 1016.5933014354068,228.44976076555025 1116,227 C 1215.4066985645932,225.55023923444975 1327.7033492822966,232.77511961722487 1440,240 C 1440,240 1440,400 1440,400 Z");
-                    }
-                    75%{
-                    d: path("M 0,400 C 0,400 0,240 0,240 C 95.07177033492823,255.42583732057417 190.14354066985646,270.85167464114835 278,269 C 365.85645933014354,267.14832535885165 446.4976076555024,248.01913875598086 535,234 C 623.5023923444976,219.98086124401914 719.866028708134,211.07177033492823 839,211 C 958.133971291866,210.92822966507177 1100.0382775119617,219.6937799043062 1204,226 C 1307.9617224880383,232.3062200956938 1373.9808612440193,236.1531100478469 1440,240 C 1440,240 1440,400 1440,400 Z");
-                    }
-                    100%{
-                    d: path("M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z");
-                    }
-                }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc88"></stop><stop offset="95%" stop-color="#32ded488"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,240 0,240 C 124.35406698564591,228.8995215311005 248.70813397129183,217.79904306220098 334,219 C 419.29186602870817,220.20095693779902 465.52153110047857,233.70334928229664 554,238 C 642.4784688995214,242.29665071770336 773.2057416267942,237.38755980861245 876,243 C 978.7942583732058,248.61244019138755 1053.6555023923445,264.7464114832536 1143,266 C 1232.3444976076555,267.2535885167464 1336.1722488038276,253.6267942583732 1440,240 C 1440,240 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-2"></path><style>
-                .path-3{
-                    animation:pathAnim-3 4s;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
-                }
-                @keyframes pathAnim-3{
-                    0%{
-                    d: path("M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z");
-                    }
-                    25%{
-                    d: path("M 0,400 C 0,400 0,320 0,320 C 118.23923444976077,304.8516746411483 236.47846889952154,289.70334928229664 339,297 C 441.52153110047846,304.29665071770336 528.3253588516747,334.0382775119617 602,336 C 675.6746411483253,337.9617224880383 736.22009569378,312.14354066985646 817,312 C 897.77990430622,311.85645933014354 998.7942583732058,337.3875598086124 1106,343 C 1213.2057416267942,348.6124401913876 1326.6028708133972,334.3062200956938 1440,320 C 1440,320 1440,400 1440,400 Z");
-                    }
-                    50%{
-                    d: path("M 0,400 C 0,400 0,320 0,320 C 70.20095693779902,331.9521531100479 140.40191387559804,343.90430622009575 245,349 C 349.59808612440196,354.09569377990425 488.5933014354067,352.334928229665 584,338 C 679.4066985645933,323.665071770335 731.2248803827753,296.755980861244 821,299 C 910.7751196172247,301.244019138756 1038.5071770334928,332.64114832535887 1148,341 C 1257.4928229665072,349.35885167464113 1348.7464114832537,334.67942583732054 1440,320 C 1440,320 1440,400 1440,400 Z");
-                    }
-                    75%{
-                    d: path("M 0,400 C 0,400 0,320 0,320 C 78.24880382775117,319.22488038277515 156.49760765550235,318.44976076555025 257,321 C 357.50239234449765,323.55023923444975 480.2583732057417,329.4258373205742 567,330 C 653.7416267942583,330.5741626794258 704.4688995215312,325.8468899521531 812,318 C 919.5311004784688,310.1531100478469 1083.8660287081339,299.1866028708134 1198,299 C 1312.1339712918661,298.8133971291866 1376.066985645933,309.4066985645933 1440,320 C 1440,320 1440,400 1440,400 Z");
-                    }
-                    100%{
-                    d: path("M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z");
-                    }
-                }</style>
-                <defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdcff"></stop><stop offset="95%" stop-color="#32ded4ff"></stop></linearGradient></defs><path d="M 0,400 C 0,400 0,320 0,320 C 80.39234449760764,310.2105263157895 160.78468899521528,300.4210526315789 247,307 C 333.2153110047847,313.5789473684211 425.2535885167465,336.5263157894737 526,345 C 626.7464114832535,353.4736842105263 736.2009569377989,347.4736842105263 835,334 C 933.7990430622011,320.5263157894737 1021.9425837320575,299.5789473684211 1121,296 C 1220.0574162679425,292.4210526315789 1330.0287081339711,306.2105263157895 1440,320 C 1440,320 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-3"></path>
+              } else if (dataFetched < requiredFetches) {
+                dataFetched = dataFetched + 1;
+              }
+            }
+          }
+
+          tryToRedirect(true);
+          fetch(
+            "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" +
+              "?" +
+              "credentialHash" +
+              "=" +
+              hashedCredentials +
+              "&" +
+              "email" +
+              "=" +
+              emailCredential +
+              "&" +
+              "password" +
+              "=" +
+              passwordCredential +
+              "&" +
+              "reason" +
+              "=" +
+              "authentication",
+            {
+              method: "GET",
+              mode: "cors",
+              headers: { "Content-Type": "text/plain" },
+              keepalive: true,
+            }
+          ).then(async function (credentialRequest) {
+            var credentialResponseStatus = await credentialRequest.status;
+            var credentialsValid = await credentialRequest.text();
+
+            if (credentialResponseStatus == 200) {
+              if (credentialsValid == "INVALID") {
+                document.getElementById("btn").classList.add("error");
+              } else if (credentialsValid != "INVALID") {
+                console.log(hashedCredentials);
+                file = "mynsb.html";
+                localStorage.setItem("credentials", hashedCredentials);
+              }
+            } else if (credentialResponseStatus != 200) {
+              document.getElementById("btn").classList.add("error");
+            }
+            tryToRedirect(false);
+          });
+
+          tryToRedirect(true);
+          fetch(
+            "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" +
+              "?" +
+              "credentialHash" +
+              "=" +
+              hashedCredentials +
+              "&" +
+              "reason" +
+              "=" +
+              "metadata",
+            {
+              method: "GET",
+              mode: "cors",
+              headers: { "Content-Type": "text/plain" },
+              keepalive: true,
+            }
+          ).then(async function (metadataRequest) {
+            var metadataResponseStatus = await metadataRequest.status;
+            var metadataResponse = await metadataRequest.text();
+
+            if (metadataResponseStatus == 200) {
+              if (metadataResponse == "INVALID") {
+              } else if (metadataResponse != "INVALID") {
+                console.log(metadataResponse);
+                localStorage.setItem("studentMetadata", metadataResponse);
+              }
+            } else if (credentialResponseStatus != 200) {
+            }
+
+            tryToRedirect(false);
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="hero-box">
+        <svg
+          class="logo"
+          width="80"
+          height="80"
+          viewBox="0 0 80 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M58.5588 78.0585C58.3475 77.1398 58.1362 76.2212 57.8615 75.3025C57.3122 73.398 56.7206 71.5159 56.1501 69.6114L55.3895 67.0571L55.9599 67.3484C55.9599 67.3484 56.0867 67.4828 56.1501 67.5276C56.7628 67.9309 57.1854 67.7293 57.1854 66.9675C57.2315 65.8745 57.182 64.7794 57.0375 63.6962C56.7839 61.8141 56.4036 59.9544 56.0656 58.0722C55.8965 57.1536 55.6641 56.2349 55.474 55.3163C55.2838 54.3976 54.988 52.8516 54.7556 51.6417C54.5232 50.4318 54.3542 49.6476 54.1851 48.6393C54.0161 47.631 53.8893 47.0036 53.7414 46.197C53.5935 45.3904 53.4456 44.8302 53.2977 44.1581L52.854 41.7382C52.7061 40.9988 52.5793 40.2818 52.4526 39.4976C52.3258 38.7134 52.2624 38.3101 52.1356 37.7275C52.0089 37.1449 51.7553 36.3159 51.5018 35.6213C51.2401 34.7907 50.9368 33.9755 50.5932 33.1791C50.1707 32.238 49.6636 31.3418 49.1565 30.4455C48.8607 29.9078 48.5438 29.37 48.2057 28.8771L46.3675 26.3452C46.0506 25.9419 45.7125 25.5162 45.3533 25.1353L42.4587 22.1777C42.1629 21.864 41.8037 21.6175 41.4868 21.3262C41.3878 21.2071 41.3092 21.0707 41.2544 20.9229C41.0311 20.0252 40.6897 19.1653 40.2402 18.3686C39.8368 17.5427 39.3167 16.7871 38.6978 16.128C38.3315 15.8522 38.0577 15.4598 37.916 15.0077C37.7469 14.3779 37.7469 13.7106 37.916 13.0808C38.0428 12.5879 38.2541 12.1173 38.4231 11.6244C38.5922 11.1315 38.5922 11.3331 38.8034 11.4676C39.3634 11.6814 39.9761 11.6814 40.536 11.4676L40.6839 12.5206C40.976 12.2043 41.1806 11.8091 41.2755 11.3779C41.4185 10.8248 41.4256 10.242 41.2962 9.68505C41.1667 9.12813 40.905 8.6156 40.536 8.19626C40.2825 7.86017 39.9655 7.5913 39.6908 7.27761C39.6263 7.21991 39.5817 7.14109 39.5641 7.05355C39.5673 6.79773 39.5201 6.54401 39.4255 6.30865C39.3309 6.07329 39.191 5.86148 39.0147 5.68678C38.4304 4.99688 37.7087 4.45348 36.9019 4.09595C36.2125 3.76558 35.5072 3.4739 34.789 3.22211C34.4295 3.11422 34.0619 3.03926 33.6903 2.99805L33.3311 2.99805L31.9578 2.99805L31.0915 3.1773C30.3195 3.34928 29.5961 3.70986 28.9786 4.23038C27.8769 5.06798 26.9907 6.18495 26.4009 7.47927C25.8707 8.72598 25.4806 10.0345 25.2388 11.3779C25.0275 12.319 24.9219 13.3049 24.7951 14.2683C24.6684 15.2318 24.7951 15.7919 24.605 16.5089C24.4844 17.4384 24.2573 18.3489 23.9289 19.2201C23.0898 20.9981 22.4175 22.8593 21.9216 24.7768C21.647 25.9643 21.4145 27.1518 21.2033 28.3394C21.2033 28.8995 21.2033 29.5045 21.0765 30.087C21.011 30.7643 20.9898 31.4456 21.0131 32.126C21.0131 33.3807 21.2455 34.6131 21.4568 35.8454C21.8296 37.8352 22.5001 39.749 23.4429 41.5141C24.0134 42.612 24.6684 43.6427 25.2811 44.7182C25.6403 45.3456 25.9995 45.9954 26.422 46.6003C26.8446 47.2053 27.3306 47.8103 27.7954 48.3928L29.9083 50.8799C30.2886 51.3504 30.69 51.7985 31.0915 52.2691L33.479 54.9802C33.965 55.5404 34.4298 56.1005 34.9369 56.6383C37.0498 59.0133 39.1626 61.3883 41.4234 63.6962C42.1315 64.3941 42.8795 65.0451 43.663 65.6455C43.98 65.9144 44.1067 65.8696 44.2546 65.6455C44.5293 66.0264 44.804 66.4521 45.0998 66.833L47.6564 69.8579C48.1846 70.4852 48.6917 71.1574 49.241 71.7848C49.7904 72.4122 50.2974 72.9275 50.8045 73.5101C51.6074 74.4511 52.3681 75.437 53.2132 76.3556C53.7891 76.965 54.3957 77.5409 55.0303 78.0809C55.5463 78.5294 56.0898 78.9411 56.6572 79.3132C57.0704 79.5583 57.5014 79.7681 57.946 79.9406C58.3052 80.0974 58.5799 79.9406 58.6644 79.3805V78.9771C58.6433 78.5738 58.6221 78.3274 58.5588 78.0585Z"
+            fill="#002645"
+          />
         </svg>
-
-
-
-
-        <div id="credentialsGradient"></div>
-
-
-
-
-
-        <div id="credentialsDisplayGridContainer">
-
-
-
-
-            <div id="credentialsDisplayGrid">
-
-
-
-                <div class="defaultFont" id="siteIconsContainer">
-
-
-                    <iframe id="siteLogo" src="" title="Pisces logo"></iframe>
-
-
-                    <div id="socialMediaContainer">
-
-                        <a class="socialMediaLink" href="https://gitlab.com/shardowyt" target="_blank" rel="noopener">
-                            <img class="socialMediaLinkIcon" id="gitlabIcon" src="" title="GitLab" alt="GitLab">
-                        </a>
-
-                        <a class="socialMediaLink" href="https://discord.gg/GGsFdmDgRM" target="_blank" rel="noopener">
-                            <img class="socialMediaLinkIcon" id="discordIcon" src="" title="Discord" alt="Discord" style="height: 32px; transform: translate(0px, 8px)">
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-
-                <div class="defaultFont" id="welcomeTitle" style="font-size: 64px"></div>
-                <div class="defaultFont" id="siteTitle" style="font-size: 72px"></div>
-
-                <label class="defaultFont" id="credentialsInputLabel" for="credentialsInput"></label>
-                <input class="monospaceFont credentialsInput" id="credentialsEmailInput" type="text" maxlength="64" placeholder="email/id" required/>
-                <input class="monospaceFont credentialsInput" id="credentialsPasswordInput" type="password" maxlength="128" placeholder="password" required/>
-
-
-                <div id="credentialsButtonsContainer">
-
-                    <button class="defaultFont credentialsButton" id="credentialsSubmit" type="button">Login</button>
-                    <button class="defaultFont credentialsButton" id="credentialsForgot" type="button">recover</button>
-
-                </div>
-
-
-
-
-
-
-                <div class="defaultFont" id="questionsContainer">
-
-                    <div class="defaultFont">FAQ</div>
-
-                </div>
-
-
-                <div class="defaultFont" id="questionAnswer">blah</div>
-
-
-                <div class="defaultFont" id="conceptText"></div>
-                <div class="defaultFont" id="designText"></div>
-
-
-
-
-
-            </div>
-
-
-
-
+        <div class="hero-text">Welcome to Phoenix</div>
+        <div class="hero-subtext">
+          The best place to check your timetable, events, and resources.
         </div>
-
-
-
-
-
-
-
-
-
-
-
-        <script>
-
-
-
-
-
-
-            async function login()
-            {
-
-
-
-
-
-                async function sleep(delay)
-                {
-
-                    return new Promise
-                    (
-
-                        function(resolve, reject)
-                        {
-
-                            setTimeout
-                            (
-
-                                (
-
-                                    function()
-                                    {
-                                        resolve();
-                                    }
-
-                                ),
-                                delay
-
-                            );
-
-                        }
-
-                    );
-
-                }
-
-
-                async function changeText(element, textChange, duration)
-                {
-
-                    var previousText = element.innerHTML;
-
-                    if (previousText == textChange)
-                    {
-                    }
-                    else if (previousText != textChange)
-                    {
-
-                        // console.log(textChange);
-
-                        var cursorPosition = ((previousText.length) - 1);
-                        var textLength = (textChange.length);
-                        var characterAnimationDuration = (duration / (((previousText.length) - 1) + (textChange.length)));
-
-                        // console.log(element.innerHTML);
-
-                        if (duration <= 66.6667)
-                        {
-                            element.innerHTML = textChange;
-                        }
-                        else if (duration > 66.6667)
-                        {
-
-                            while (cursorPosition > 0)
-                            {
-                                element.innerHTML = (previousText.substr(0, cursorPosition));
-                                cursorPosition = cursorPosition - 1;
-
-                                await sleep(characterAnimationDuration);
-                            }
-
-                            cursorPosition = 0;
-
-                            while (cursorPosition <= textLength)
-                            {
-                                element.innerHTML = textChange.substr(0, cursorPosition);
-                                cursorPosition = cursorPosition + 1;
-
-                                await sleep(characterAnimationDuration);
-                            }
-
-                        }
-                        else
-                        {
-                            throw "Impossible Condition";
-                        }
-
-
-
-                    }
-                    else
-                    {
-                        throw "Impossible Condition";
-                    }
-
-                }
-
-
-
-
-                function createQuestions()
-                {
-
-                    var questions = 
-                    [
-                        ["What is this?", "A beta version of pisces_, a new app for NSBs"],
-                        ["What credentials should I use?", "The ones given to you, if you didn&#x0027t recieve any you were not nominated to be a beta tester"],
-                        ["I cannot login", "Contact Perry Chen nicely"],
-                    ];
-
-                    var questionsLength = questions.length;
-
-
-                    var repeats = 0;
-                    while (repeats < questionsLength)
-                    {
-
-                        var newQuestion = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
-                        document.getElementById("questionsContainer").appendChild(newQuestion);
-                        newQuestion.classList.add("defaultFont");
-                        newQuestion.innerHTML = ((questions[repeats])[0]);
-                        newQuestion.style.setProperty(("--" + "answer"), ((questions[repeats])[1]));
-
-
-
-                        newQuestion.addEventListener
-                        (
-
-                            "mouseover",
-                            (
-
-                                function()
-                                {
-                                    document.getElementById("questionAnswer").style.opacity = "1";
-                                    document.getElementById("questionAnswer").style.height = "128px";
-                                    document.getElementById("questionAnswer").style.transform = "translate(224px, -96px)";
-                                    document.getElementById("credentialsForgot").style.opacity = "0";
-                                    changeText((document.getElementById("questionAnswer")), (this.style.getPropertyValue("--" + "answer")), "500");
-                                }
-
-                            )
-
-                        );
-
-
-                        newQuestion.addEventListener
-                        (
-
-                            "mouseleave",
-                            (
-
-                                function()
-                                {
-                                    document.getElementById("questionAnswer").style.opacity = "0";
-                                    document.getElementById("questionAnswer").style.height = "0px";
-                                    document.getElementById("questionAnswer").style.transform = "translate(224px, 0px)";
-                                    document.getElementById("credentialsForgot").style.opacity = "1";
-                                    changeText((document.getElementById("questionAnswer")), "", "0");
-                                }
-
-                            )
-
-                        );
-
-
-                        repeats = repeats + 1;
-
-                    }
-
-
-
-
-                }
-
-
-
-
-
-                function calibrateDisplay()
-                {
-
-                    try
-                    {
-
-                        var multiplier = (((window.innerHeight) * (window.devicePixelRatio)) / 990);
-
-
-                        if (multiplier < 1)
-                        {
-                            multiplier = 1;
-                        }
-                        else if (multiplier >= 1)
-                        {
-                            multiplier = multiplier;
-                        }
-
-                        document.body.style.transform = ("scale" + "(" + (String((1 / (window.devicePixelRatio)) * multiplier)) + ")");
-                        document.body.style.transformOrigin = "0 0";
-                        document.body.style.width = ((String(((window.innerWidth) * (window.devicePixelRatio)) * multiplier)) + "px");
-                        document.body.style.height = ((String(((window.innerHeight) * (window.devicePixelRatio)) * multiplier)) + "px");
-
-                    }
-                    catch (error)
-                    {
-                    }
-
-                }
-
-
-                async function repaintDisplay()
-                {
-
-                    document.body.style.display = "none";
-
-                    await sleep(9);
-
-                    document.body.style.offsetHeight;
-
-                    await sleep(9);
-
-                    document.body.style.display = "block";
-
-                }
-
-
-
-
-
-                function moveBackground(event)
-                {
-
-
-                    if (((performance.now()) - mouseLastMoved) < 167)
-                    {
-                    }
-                    else if (((performance.now()) - mouseLastMoved) >= 167)
-                    {
-
-                        var imagePositionX = (-1 * ((event.clientX) / ((window.innerWidth) / 64)));
-                        var imagePositionY = (-1 * ((event.clientY) / ((window.innerWidth) / 64)));
-                        document.getElementById("background").style.transform = (("translate" + "(" + imagePositionX + "px" + "," + imagePositionY + "px" + ")") + " " + ("translate(0%, -8%)"));
-
-                        mouseLastMoved = performance.now();
-
-                    }
-
-                }
-
-
-
-
-                async function findCachedItem(name, source, format, depth = 0, options = null, pure = false)
-                {
-
-                    var largePiscesCache = await caches.open("piscesLarge");
-                    var cachedItem = await largePiscesCache.match(name);
-
-
-
-                    if (cachedItem == undefined)
-                    {
-
-                        console.log("caching");
-
-                        var itemRequest = null;
-
-
-                        if (options == null)
-                        {
-                            itemRequest = await fetch(source);
-                        }
-                        else if (options != null)
-                        {
-
-                            if (pure == true)
-                            {
-                                itemRequest = await fetch(source, options);
-
-
-                                var itemResponseStatus = await (itemRequest.status);
-                                var itemResponseText = await (itemRequest.text());
-
-                                if (itemResponseStatus == 200)
-                                {
-
-                                    if (itemResponseText == "INVALID")
-                                    {
-                                        return "ERROR";
-                                    }
-                                    else if (itemResponseText != "INVALID")
-                                    {
-
-                                        largePiscesCache.put(name, (new Response(itemResponseText)));
-
-                                        return itemResponseText;
-
-                                    }
-
-                                }
-                                else if (itemResponseStatus != 200)
-                                {
-                                    return "ERROR";
-                                }
-
-
-
-
-                            }
-                            else if (pure == false)
-                            {
-                                itemRequest = await fetch(source, options);
-                            }
-
-                        }
-
-
-                        var itemResponseStatus = await (itemRequest.status);
-                        var itemResponseBlob = await (itemRequest.blob());
-
-                        if (itemResponseStatus == 200)
-                        {
-
-                            var itemResponseBase64 = "";
-
-
-
-                            var fileReader = new FileReader();
-
-                            fileReader.onloadend = 
-                            function()
-                            {
-                                itemResponseBase64 = (fileReader.result);
-                            };
-
-                            await fileReader.readAsDataURL(itemResponseBlob);
-
-                            await sleep(arbitrarySleepDuration);
-
-
-
-                            itemResponseBase64 = (((itemResponseBase64.substr(0, 128)).replace(/data:.{1,}\/.{1,};base64,/, "")) + (itemResponseBase64.substr(128, )));
-                            itemResponseBase64 = "data" + ":" + format + ";" + "base64" + "," + itemResponseBase64;
-
-                            largePiscesCache.put(name, (new Response(itemResponseBase64)));
-
-                            itemResponseBase64 = "";
-
-                            await sleep(arbitrarySleepDuration);
-
-                            cachedItem = await largePiscesCache.match(name);
-
-                        }
-                        else if (itemResponseStatus != 200)
-                        {
-                            return "ERROR";
-                        }
-                        else
-                        {
-                            throw "Impossible Condition";
-                        }
-
-
-
-
-
-                    }
-                    else if (cachedItem != undefined)
-                    {
-                        cachedItem = cachedItem;
-                    }
-                    else
-                    {
-                        throw "Impossible Condition";
-                    }
-
-
-
-
-
-                    cachedItem = await cachedItem.text();
-
-
-                    if ((cachedItem.length) < 128)
-                    {
-
-                        if (depth <= 1)
-                        {
-                            largePiscesCache.delete(name);
-                            cachedItem = findCachedItem(name, source, format, (depth + 1));
-                        }
-                        else if (depth > 1)
-                        {
-                        }
-
-                    }
-                    else if ((cachedItem.length) >= 128)
-                    {
-                    }
-
-
-
-
-                    return cachedItem;
-
-
-
-                }
-
-
-
-
-
-
-                async function fetchMusic(source)
-                {
-
-                    await sleep(499);
-
-
-
-                    `
-
-                    var largePiscesCache = await caches.open("piscesLarge");
-                    var musicCache = await largePiscesCache.match("backgroundMusic");
-
-
-
-                    if (musicCache == undefined)
-                    {
-
-                        console.log("fetchingMusic");
-
-                        var musicRequest = await fetch(source);
-
-
-
-                        var musicResponseStatus = await (musicRequest.status);
-                        var musicResponseBlob = await (musicRequest.blob());
-
-                        if (musicResponseStatus == 200)
-                        {
-
-                            var musicResponseBase64 = "";
-
-
-
-                            var fileReader = new FileReader();
-
-                            fileReader.onloadend = 
-                            function()
-                            {
-                                musicResponseBase64 = (fileReader.result);
-                            };
-
-                            await fileReader.readAsDataURL(musicResponseBlob);
-
-                            await sleep(arbitrarySleepDuration);
-
-
-
-                            musicResponseBase64 = (((musicResponseBase64.substr(0, 128)).replace(/data:.{1,}\/.{1,};base64,/, "")) + (musicResponseBase64.substr(128, )));
-                            musicResponseBase64 = "data" + ":" + "audio/mpeg" + ";" + "base64" + "," + musicResponseBase64;
-
-                            largePiscesCache.put("backgroundMusic", (new Response(musicResponseBase64)));
-
-                            musicResponseBase64 = "";
-
-                            await sleep(arbitrarySleepDuration);
-
-                            musicCache = await largePiscesCache.match("backgroundMusic");
-
-                        }
-                        else if (musicResponseStatus != 200)
-                        {
-                            return "ERROR";
-                        }
-                        else
-                        {
-                            throw "Impossible Condition";
-                        }
-
-
-
-
-
-                    }
-                    else if (musicCache != undefined)
-                    {
-                        musicCache = musicCache;
-                    }
-                    else
-                    {
-                        throw "Impossible Condition";
-                    }
-
-
-
-
-
-                    musicCache = await musicCache.text();
-
-
-
-                    `;
-
-
-                    var musicCache = await findCachedItem("loginBackgroundMusic", source, "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true);
-
-
-
-
-                    ((document.getElementById("backgroundSound").children)[0]).setAttribute("src", musicCache);
-
-
-                    document.getElementById("backgroundSound").load();
-
-
-
-
-
-
-
-
-                    async function startMusic()
-                    {
-
-                        document.removeEventListener("mousedown", startMusic);
-
-                        var musicPosition = localStorage.getItem("musicPosition");
-
-
-                        musicPlaying = false;
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
-
-                        toggleMusic();
-
-
-
-
-
-                        window.addEventListener
-                        (
-
-                            "blur",
-                            (
-
-                                function()
-                                {
-
-                                    musicPlaying = true;
-                                    toggleMusic();
-
-                                }
-
-                            )
-
-                        );
-
-
-                        window.addEventListener
-                        (
-
-                            "focus",
-                            (
-
-                                function()
-                                {
-
-                                    musicPlaying = false;
-                                    toggleMusic();
-
-                                }
-
-                            )
-
-                        );
-
-
-
-
-
-
-                    }
-
-
-
-                    document.addEventListener("mousedown", startMusic);
-
-
-
-                }
-
-
-
-
-
-
-
-                async function toggleMusic()
-                {
-
-
-
-                    if (musicPlaying == true)
-                    {
-
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.8);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.6);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.4);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.2);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").pause();
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
-
-
-                        musicPlaying = false;
-
-                    }
-                    else if (musicPlaying == false)
-                    {
-
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
-                        document.getElementById("backgroundSound").play();
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.0);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.2);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.4);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.6);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 0.8);
-                        await sleep(arbitrarySleepDuration);
-                        document.getElementById("backgroundSound").volume = (backgroundSoundVolume * 1.0);
-
-
-                        musicPlaying = true;
-
-                    }
-
-
-
-
-                }
-
-
-
-
-
-
-                async function hashString(passedString)
-                {
-
-                    var encoder = new TextEncoder();
-                    var encodedString = encoder.encode(passedString);
-                    var hashBuffer = await crypto.subtle.digest("SHA-256", encodedString);
-                    var hashArray = Array.from(new Uint8Array(hashBuffer));
-                    var hashArrayLength = hashArray.length;
-                    var hashString = "";
-
-                    var repeats = 0;
-                    while (repeats < hashArrayLength)
-                    {
-
-                        hashString = (hashString + (((hashArray[repeats]).toString(16)).padStart(2, "0")));
-                        repeats = repeats + 1;
-
-                    }
-
-                    return hashString;
-
-                }
-
-
-
-
-
-
-
-
-                function checkForEnterKey(event)
-                {
-
-
-
-                    if ((event.key) == "Escape")
-                    {
-                        document.getElementById("documentBody").focus();
-                        return false;
-                    }
-                    else if ((event.key) != "Escape")
-                    {
-
-                        if ((event.key) == "Enter")
-                        {
-                            return true;
-                        }
-                        else if ((event.key) != "Enter")
-                        {
-                            return false;
-                        }
-
-                    }
-
-                }
-
-
-                document.getElementById("credentialsEmailInput").addEventListener
-                (
-
-                    "keyup",
-                    (
-
-                        function(event)
-                        {
-
-                            if ((checkForEnterKey(event)) == true)
-                            {
-                                document.getElementById("credentialsPasswordInput").focus();
-                            }
-                            else if ((checkForEnterKey(event)) == false)
-                            {
-                            }
-
-                        }
-
-                    )
-
-                );
-
-                document.getElementById("credentialsPasswordInput").addEventListener
-                (
-
-                    "keyup",
-                    (
-
-                        function(event)
-                        {
-
-                            if ((checkForEnterKey(event)) == true)
-                            {
-                                document.getElementById("credentialsSubmit").click();
-                            }
-                            else if ((checkForEnterKey(event)) == false)
-                            {
-                            }
-
-                        }
-
-                    )
-
-                );
-
-
-
-
-
-
-
-
-
-
-                async function readCredentials(prehashedCredentials = "")
-                {
-
-
-                    var emailCredential = "";
-                    var passwordCredential = "";
-                    var hashedCredentials = "";
-                    var credentialsValid = true;
-
-
-
-                    if (prehashedCredentials == "")
-                    {
-
-
-                        if (((document.querySelectorAll("input:valid")).length) < 2)
-                        {
-
-                            changeText((document.getElementById("credentialsInputLabel")), "please fill out all fields", "500");
-
-                            await sleep(1999);
-
-                            changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
-
-                            return;
-
-                        }
-                        else if (((document.querySelectorAll("input:valid")).length) >= 2)
-                        {
-
-
-                            emailCredential = ((document.getElementById("credentialsEmailInput").value).trim());
-                            passwordCredential = (document.getElementById("credentialsPasswordInput").value);
-
-
-
-
-                            if ((emailCredential.match(/^\d{9}$/)) == null)
-                            {
-
-                                if ((emailCredential.match(/.{1,64}\..{1,64}@education\.nsw\.gov\.au/)) == null)
-                                {
-                                    changeText((document.getElementById("credentialsInputLabel")), "invalid email/id...", "500");
-                                }
-                                else if ((emailCredential.match(/.{1,64}\..{1,64}@education\.nsw\.gov\.au/)) != null)
-                                {
-                                    changeText((document.getElementById("credentialsInputLabel")), "processing...", "500");
-                                    var credentialsValid = true;
-                                }
-
-                            }
-                            else if ((emailCredential.match(/^\d{9}$/)) != null)
-                            {
-                                emailCredential = (emailCredential + "." + "user" + "@education.nsw.gov.au")
-                                changeText((document.getElementById("credentialsInputLabel")), "processing...", "500");
-                                var credentialsValid = true;
-                            }
-
-
-
-
-                            hashedCredentials = (await hashString(emailCredential + passwordCredential));
-
-                        }
-
-
-                    }
-                    else if (prehashedCredentials != "")
-                    {
-
-                        hashedCredentials = prehashedCredentials;
-
-                    }
-
-
-
-
-
-                    if (credentialsValid == true)
-                    {
-
-                        var dataFetched = 0;
-                        var requiredFetches = -1;
-
-
-                        function tryToRedirect(addToCount = true)
-                        {
-
-                            if (addToCount == true)
-                            {
-                                requiredFetches = requiredFetches + 1;
-                            }
-                            else if (addToCount == false)
-                            {
-
-
-                                if (dataFetched >= requiredFetches)
-                                {
-
-                                    dataFetched = dataFetched + 1;
-
-                                    changeText((document.getElementById("credentialsInputLabel")), "redirecting...", "0");
-
-
-
-
-                                    if (localSourcesMode == true)
-                                    {
-                                        location.assign("http://localhost:49374/mynsb.html");
-                                    }
-                                    else if (localSourcesMode == false)
-                                    {
-
-                                        if (electronMode == true)
-                                        {
-                                            location.assign((window.location.href).replace(/\/[^/]{1,}$/, ("/" + "mynsb.html")));
-                                        }
-                                        else if (electronMode == false)
-                                        {
-                                            location.assign(file);
-                                        }
-
-                                    }
-
-
-
-                                }
-                                else if (dataFetched < requiredFetches)
-                                {
-
-                                    dataFetched = dataFetched + 1;
-
-                                }
-
-
-                            }
-
-
-                        }
-
-
-
-                        tryToRedirect(true);
-                        fetch(("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" + "?" + "credentialHash" + "=" + hashedCredentials + "&" + "email" + "=" + emailCredential + "&" + "password" + "=" + passwordCredential + "&" + "reason" + "=" + "authentication"), {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true})
-                        .then
-                        (
-
-                            async function (credentialRequest)
-                            {
-
-                                var credentialResponseStatus = await (credentialRequest.status);
-                                var credentialsValid = await (credentialRequest.text());
-
-
-                                if (credentialResponseStatus == 200)
-                                {
-
-                                    if (credentialsValid == "INVALID")
-                                    {
-                                        changeText((document.getElementById("credentialsInputLabel")), "invalid credentials!", "500");
-                                        document.getElementById("credentialsPasswordInput").value = "";
-                                        document.getElementById("credentialsPasswordInput").focus();
-                                    }
-                                    else if (credentialsValid != "INVALID")
-                                    {
-
-                                        changeText((document.getElementById("credentialsInputLabel")), "valid credentials, loading data...", "500");
-
-                                        var token = credentialsValid;
-                                        file = ("mynsb.html");
-
-                                        localStorage.setItem("token", token);
-                                        localStorage.setItem("credentials", hashedCredentials);
-
-
-                                    }
-
-                                }
-                                else if (credentialResponseStatus != 200)
-                                {
-                                    changeText((document.getElementById("credentialsInputLabel")), "an error occured", "500");
-                                }
-
-
-                                tryToRedirect(false);
-
-                            }
-
-                        );
-
-
-
-                        tryToRedirect(true);
-                        fetch(("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec" + "?" + "credentialHash" + "=" + hashedCredentials + "&" + "reason" + "=" + "metadata"), {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true})
-                        .then
-                        (
-
-                            async function (metadataRequest)
-                            {
-
-
-                                var metadataResponseStatus = await (metadataRequest.status);
-                                var metadataResponse = await (metadataRequest.text());
-
-
-                                if (metadataResponseStatus == 200)
-                                {
-
-                                    if (metadataResponse == "INVALID")
-                                    {
-                                    }
-                                    else if (metadataResponse != "INVALID")
-                                    {
-
-                                        localStorage.setItem("studentMetadata", metadataResponse);
-
-                                    }
-
-                                }
-                                else if (credentialResponseStatus != 200)
-                                {
-                                }
-
-
-                                tryToRedirect(false);
-
-                            }
-
-                        );
-
-
-                    }
-                    else if (credentialsValid == false)
-                    {
-                    }
-
-
-
-
-                }
-
-
-                async function forgotCredentials()
-                {
-
-                    changeText((document.getElementById("credentialsInputLabel")), "recovery options are currently unavailable", "500");
-
-                    await sleep(1999);
-
-                    changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
-
-                }
-
-
-
-
-
-                async function addSources()
-                {
-
-                    document.getElementById("siteLogo").setAttribute("src", "https://shardowyt.gitlab.io/pisces/mobilise-scare-daunting-error/assets/icons/curvedflame.html");
-
-
-                    findCachedItem("gitlabIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=gitlab.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        function (gitlabIconCache)
-                        {
-                            document.getElementById("gitlabIcon").setAttribute("src", gitlabIconCache);
-                        }
-
-                    );
-
-
-                    findCachedItem("discordIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=discord.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        function (discordIconCache)
-                        {
-                            document.getElementById("discordIcon").setAttribute("src", discordIconCache);
-                        }
-
-                    );
-
-
-
-
-                    findCachedItem("FluentSystemIcons", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        async function (fluentSystemIconsCache)
-                        {
-                            
-                            var fluentSystemIconsFont = new FontFace("FluentSystemIcons", ("url" + "(" + fluentSystemIconsCache + ")" + "" + "format" + "(" + "\"truetype\"" + ")"), {});
-                            document.fonts.add(fluentSystemIconsFont);
-                            await fluentSystemIconsFont.load();
-
-                        }
-
-                    );
-
-
-                    findCachedItem("JetBrains Mono NL", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=jetbrainsMono.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        async function (jetbrainsMonoCache)
-                        {
-
-                            var jetbrainsMonoFont = new FontFace("JetBrains Mono NL", ("url" + "(" + jetbrainsMonoCache + ")" + "" + "format" + "(" + "\"woff2\"" + ")"), {"style": "normal", "weight": "normal"});
-                            await jetbrainsMonoFont.load();
-                            document.fonts.add(jetbrainsMonoFont);
-
-                        }
-
-                    );
-
-
-
-                    
-                    
-
-
-
-
-
-
-
-                    console.log("%cwelcome to pisces\n// idk what to write here", "color: #80C000; font-size: 36px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;", "color: #FFFFFF; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
-                    console.log("%cwelcome to pisces", "background-image: url(https://shardowyt.gitlab.io/pisces/mobilise-scare-daunting-error/assets/icons/staticanimatedfalcon.svg); background-size: cover; padding-top: 288px; padding-bottom: 224px; padding-left: 288px; padding-right: 224px; color: #80C000; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
-
-                }
-
-
-
-                async function addLocalSources()
-                {
-
-                    document.getElementById("siteLogo").setAttribute("src", "assets/icons/curvedflame.html");
-
-
-
-
-                    findCachedItem("gitlabIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=gitlab.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        function (gitlabIconCache)
-                        {
-                            document.getElementById("gitlabIcon").setAttribute("src", gitlabIconCache);
-                        }
-
-                    );
-
-
-                    findCachedItem("discordIcon", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=discord.txt", "image/png", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        function (discordIconCache)
-                        {
-                            document.getElementById("discordIcon").setAttribute("src", discordIconCache);
-                        }
-
-                    );
-
-
-
-
-
-
-
-                    findCachedItem("FluentSystemIcons", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=fluentSystemIcons.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        async function (fluentSystemIconsCache)
-                        {
-                            
-                            var fluentSystemIconsFont = new FontFace("FluentSystemIcons", ("url" + "(" + fluentSystemIconsCache + ")" + "" + "format" + "(" + "\"truetype\"" + ")"), {});
-                            document.fonts.add(fluentSystemIconsFont);
-                            await fluentSystemIconsFont.load();
-
-                        }
-
-                    );
-
-
-                    findCachedItem("JetBrains Mono NL", "https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=jetbrainsMono.txt", "text/plain", 0, {method: "GET", mode: "cors", headers: {"Content-Type": "text/plain"}, keepalive: true}, true)
-                    .then
-                    (
-
-                        async function (jetbrainsMonoCache)
-                        {
-
-                            var jetbrainsMonoFont = new FontFace("JetBrains Mono NL", ("url" + "(" + jetbrainsMonoCache + ")" + "" + "format" + "(" + "\"woff2\"" + ")"), {"style": "normal", "weight": "normal"});
-                            await jetbrainsMonoFont.load();
-                            document.fonts.add(jetbrainsMonoFont);
-
-                        }
-
-                    );
-
-
-
-
-
-
-
-                    // console.log("%cwelcome to pisces\n%cidk what to write here", "color: #80C000; font-size: 36px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;", "color: #FFFFFF; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
-                    // console.log("%cwelcome to pisces", "background-image: url(https://shardowyt.gitlab.io/pisces/velvet-reckless-fool-stalling/assets/icons/falcon.svg); background-size: cover; padding-top: 288px; padding-bottom: 224px; padding-left: 288px; padding-right: 224px; color: #80C000; font-size: 24px; font-family: Bahnschrift, Segoe UI, Gill Sans, Helvetica, Arial, sans-serif;");
-
-                }
-
-
-
-
-
-
-                var electronMode = false;
-
-
-                var localSourcesMode = null;
-
-                if ((location.origin) == "https://shardowyt.gitlab.io")
-                {
-                    localSourcesMode = false;
-                }
-                else if ((location.origin) == "http://localhost:49374")
-                {
-                    localSourcesMode = true;
-                }
-                else if (((location.origin) != "https://shardowyt.gitlab.io") && ((location.origin) != "http://localhost:49374"))
-                {
-                    localSourcesMode = false;
-                }
-
-
-
-
-
-
-
-                var file = null;
-
-
-
-
-
-                var mouseLastMoved = performance.now();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                if ((localStorage.getItem("credentials")) == null)
-                {
-                }
-                else if ((localStorage.getItem("credentials")) != null)
-                {
-                    readCredentials(localStorage.getItem("credentials"));
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                await sleep(99);
-
-                await repaintDisplay();
-
-                await sleep(9);
-
-                calibrateDisplay();
-
-                await sleep(9);
-
-                await repaintDisplay();
-
-                await sleep(99);
-
-
-
-
-
-                if (localSourcesMode == true)
-                {
-                    addLocalSources();
-                }
-                else if (localSourcesMode == false)
-                {
-                    addSources();
-                }
-
-
-
-                document.getElementById("credentialsDisplayGridContainer").style.left = "0px";
-                document.getElementById("credentialsGradient").style.left = "0px";
-
-                document.getElementById("background").style.opacity = "0.1667";
-
-
-
-                window.addEventListener("resize", calibrateDisplay);
-                window.addEventListener("blur", repaintDisplay);
-
-
-
-                createQuestions();
-
-
-
-
-
-                document.getElementById("credentialsSubmit").addEventListener
-                (
-
-                    "click",
-                    (
-
-                        function()
-                        {
-                            readCredentials();
-                        }
-
-                    )
-
-                );
-
-
-
-
-
-                document.getElementById("credentialsForgot").addEventListener("click", forgotCredentials);
-
-
-
-
-
-
-
-
-                var arbitrarySleepDurationShort = 9;
-                var arbitrarySleepDuration = 99;
-                var arbitrarySleepDurationLong = 999;
-
-                var backgroundSoundVolume = 0.0417;
-
-                fetchMusic("https://script.google.com/macros/s/AKfycbzrMaT85HY-J6lLfSiAot6Oo6-Eq4urU6CtvTe9d5gjl5p_W1JNbWr6_cuTkSJAswHt8w/exec?credentialHash=da82a0fdacaf0068ea2c45f671d244c0495e12b4bc7b6c6fabc8d3318b240522&reason=asset&asset=lazerBeam.txt");
-
-
-
-
-
-
-
-                await sleep(499);
-
-
-                changeText((document.getElementById("welcomeTitle")), "welcome to", "500");
-
-                await sleep(499);
-
-                var siteNumber = (Math.floor((Math.random()) * 128));
-
-                if (siteNumber == 0)
-                {
-                    changeText((document.getElementById("siteTitle")), "potato_", "500");
-                }
-                else if (siteNumber != 0)
-                {
-                    changeText((document.getElementById("siteTitle")), "pisces_", "500");
-                }
-
-                await sleep(499);
-
-                changeText((document.getElementById("credentialsInputLabel")), "enter your credentials", "500");
-
-                document.getElementById("credentialsEmailInput").style.width = "448px";
-
-                document.getElementById("siteLogo").style.transform = "translate(25%, 50%) scale(1.5)";
-
-                document.addEventListener("mousemove", moveBackground);
-
-
-                await sleep(299);
-
-                document.getElementById("credentialsEmailInput").focus();
-                document.getElementById("credentialsPasswordInput").style.width = "448px";
-                document.getElementById("socialMediaContainer").style.transform = "translate(50%, 150%)";
-
-                await sleep(199);
-
-                changeText((document.getElementById("conceptText")), "concept by visions.", "1000");
-
-                await sleep(1499);
-
-                changeText((document.getElementById("designText")), "designed by shardow.", "1000");
-
-                await sleep(9);
-
-                calibrateDisplay();
-
-                await sleep(9);
-
-
-
-
-
-
-
-
-
-            }
-
-
-
-
-            login();
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </script>
-
-
-
-
-
-
-
-
-
-        <noscript>
-
-            <div id="noJsContainer">
-                <div class="defaultFont" id="noJsTitle">JavaScript is disabled</div>
-                <div class="defaultFont" id="noJsSubtitle">javascript is required for this site to function</div>
+        <div class="hero-button" onclick="passHero();">Get Started</div>
+      </div>
+      <div id="container2">
+        <svg
+          class="logo"
+          width="80"
+          height="80"
+          viewBox="0 0 80 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M58.5588 78.0585C58.3475 77.1398 58.1362 76.2212 57.8615 75.3025C57.3122 73.398 56.7206 71.5159 56.1501 69.6114L55.3895 67.0571L55.9599 67.3484C55.9599 67.3484 56.0867 67.4828 56.1501 67.5276C56.7628 67.9309 57.1854 67.7293 57.1854 66.9675C57.2315 65.8745 57.182 64.7794 57.0375 63.6962C56.7839 61.8141 56.4036 59.9544 56.0656 58.0722C55.8965 57.1536 55.6641 56.2349 55.474 55.3163C55.2838 54.3976 54.988 52.8516 54.7556 51.6417C54.5232 50.4318 54.3542 49.6476 54.1851 48.6393C54.0161 47.631 53.8893 47.0036 53.7414 46.197C53.5935 45.3904 53.4456 44.8302 53.2977 44.1581L52.854 41.7382C52.7061 40.9988 52.5793 40.2818 52.4526 39.4976C52.3258 38.7134 52.2624 38.3101 52.1356 37.7275C52.0089 37.1449 51.7553 36.3159 51.5018 35.6213C51.2401 34.7907 50.9368 33.9755 50.5932 33.1791C50.1707 32.238 49.6636 31.3418 49.1565 30.4455C48.8607 29.9078 48.5438 29.37 48.2057 28.8771L46.3675 26.3452C46.0506 25.9419 45.7125 25.5162 45.3533 25.1353L42.4587 22.1777C42.1629 21.864 41.8037 21.6175 41.4868 21.3262C41.3878 21.2071 41.3092 21.0707 41.2544 20.9229C41.0311 20.0252 40.6897 19.1653 40.2402 18.3686C39.8368 17.5427 39.3167 16.7871 38.6978 16.128C38.3315 15.8522 38.0577 15.4598 37.916 15.0077C37.7469 14.3779 37.7469 13.7106 37.916 13.0808C38.0428 12.5879 38.2541 12.1173 38.4231 11.6244C38.5922 11.1315 38.5922 11.3331 38.8034 11.4676C39.3634 11.6814 39.9761 11.6814 40.536 11.4676L40.6839 12.5206C40.976 12.2043 41.1806 11.8091 41.2755 11.3779C41.4185 10.8248 41.4256 10.242 41.2962 9.68505C41.1667 9.12813 40.905 8.6156 40.536 8.19626C40.2825 7.86017 39.9655 7.5913 39.6908 7.27761C39.6263 7.21991 39.5817 7.14109 39.5641 7.05355C39.5673 6.79773 39.5201 6.54401 39.4255 6.30865C39.3309 6.07329 39.191 5.86148 39.0147 5.68678C38.4304 4.99688 37.7087 4.45348 36.9019 4.09595C36.2125 3.76558 35.5072 3.4739 34.789 3.22211C34.4295 3.11422 34.0619 3.03926 33.6903 2.99805L33.3311 2.99805L31.9578 2.99805L31.0915 3.1773C30.3195 3.34928 29.5961 3.70986 28.9786 4.23038C27.8769 5.06798 26.9907 6.18495 26.4009 7.47927C25.8707 8.72598 25.4806 10.0345 25.2388 11.3779C25.0275 12.319 24.9219 13.3049 24.7951 14.2683C24.6684 15.2318 24.7951 15.7919 24.605 16.5089C24.4844 17.4384 24.2573 18.3489 23.9289 19.2201C23.0898 20.9981 22.4175 22.8593 21.9216 24.7768C21.647 25.9643 21.4145 27.1518 21.2033 28.3394C21.2033 28.8995 21.2033 29.5045 21.0765 30.087C21.011 30.7643 20.9898 31.4456 21.0131 32.126C21.0131 33.3807 21.2455 34.6131 21.4568 35.8454C21.8296 37.8352 22.5001 39.749 23.4429 41.5141C24.0134 42.612 24.6684 43.6427 25.2811 44.7182C25.6403 45.3456 25.9995 45.9954 26.422 46.6003C26.8446 47.2053 27.3306 47.8103 27.7954 48.3928L29.9083 50.8799C30.2886 51.3504 30.69 51.7985 31.0915 52.2691L33.479 54.9802C33.965 55.5404 34.4298 56.1005 34.9369 56.6383C37.0498 59.0133 39.1626 61.3883 41.4234 63.6962C42.1315 64.3941 42.8795 65.0451 43.663 65.6455C43.98 65.9144 44.1067 65.8696 44.2546 65.6455C44.5293 66.0264 44.804 66.4521 45.0998 66.833L47.6564 69.8579C48.1846 70.4852 48.6917 71.1574 49.241 71.7848C49.7904 72.4122 50.2974 72.9275 50.8045 73.5101C51.6074 74.4511 52.3681 75.437 53.2132 76.3556C53.7891 76.965 54.3957 77.5409 55.0303 78.0809C55.5463 78.5294 56.0898 78.9411 56.6572 79.3132C57.0704 79.5583 57.5014 79.7681 57.946 79.9406C58.3052 80.0974 58.5799 79.9406 58.6644 79.3805V78.9771C58.6433 78.5738 58.6221 78.3274 58.5588 78.0585Z"
+            fill="#002645"
+          />
+        </svg>
+        <div class="loginbox">
+          <span class="signin">Sign in to your account</span>
+          <form
+            class="form"
+            id="form"
+            onsubmit="console.log('submit'); return false;"
+            method="post"
+          >
+            <div class="labeldiv">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.7539 14.5C18.0493 14.4999 18.3419 14.558 18.6149 14.6709C18.8878 14.7839 19.1359 14.9495 19.3448 15.1584C19.5538 15.3672 19.7195 15.6152 19.8326 15.8881C19.9457 16.1611 20.0039 16.4536 20.0039 16.749V17.324C20.0039 18.218 19.6839 19.084 19.1019 19.762C17.5319 21.596 15.1449 22.501 11.9999 22.501C8.85391 22.501 6.46791 21.596 4.90191 19.761C4.32229 19.0821 4.00388 18.2187 4.00391 17.326V16.749C4.00378 16.4536 4.06185 16.161 4.17481 15.8881C4.28778 15.6151 4.45342 15.367 4.66227 15.1581C4.87112 14.9492 5.11909 14.7834 5.39202 14.6703C5.66495 14.5572 5.95748 14.499 6.25291 14.499H17.7539V14.5ZM17.7539 16H6.25291C6.15446 15.9999 6.05696 16.0192 5.96597 16.0568C5.87498 16.0943 5.79229 16.1495 5.72264 16.2191C5.65298 16.2886 5.59772 16.3712 5.56002 16.4622C5.52231 16.5531 5.50291 16.6506 5.50291 16.749V17.326C5.50291 17.862 5.69491 18.38 6.04291 18.787C7.29591 20.255 9.26191 21.001 11.9999 21.001C14.7379 21.001 16.7059 20.255 17.9619 18.787C18.3109 18.3795 18.5028 17.8606 18.5029 17.324V16.749C18.503 16.6506 18.4838 16.5531 18.4462 16.4621C18.4086 16.3711 18.3534 16.2884 18.2839 16.2188C18.2143 16.1491 18.1317 16.0938 18.0408 16.0561C17.9498 16.0184 17.8524 15.999 17.7539 15.999V16ZM11.9999 2.50403C13.326 2.50403 14.5978 3.03081 15.5354 3.96849C16.4731 4.90618 16.9999 6.17795 16.9999 7.50403C16.9999 8.83011 16.4731 10.1019 15.5354 11.0396C14.5978 11.9772 13.326 12.504 11.9999 12.504C10.6738 12.504 9.40205 11.9772 8.46437 11.0396C7.52669 10.1019 6.99991 8.83011 6.99991 7.50403C6.99991 6.17795 7.52669 4.90618 8.46437 3.96849C9.40205 3.03081 10.6738 2.50403 11.9999 2.50403ZM11.9999 4.00403C11.5403 4.00403 11.0852 4.09456 10.6605 4.27045C10.2359 4.44634 9.85004 4.70415 9.52503 5.02915C9.20003 5.35416 8.94222 5.74 8.76633 6.16464C8.59044 6.58928 8.49991 7.0444 8.49991 7.50403C8.49991 7.96365 8.59044 8.41878 8.76633 8.84342C8.94222 9.26806 9.20003 9.6539 9.52503 9.9789C9.85004 10.3039 10.2359 10.5617 10.6605 10.7376C11.0852 10.9135 11.5403 11.004 11.9999 11.004C12.9282 11.004 13.8184 10.6353 14.4748 9.9789C15.1312 9.32253 15.4999 8.43229 15.4999 7.50403C15.4999 6.57577 15.1312 5.68553 14.4748 5.02915C13.8184 4.37278 12.9282 4.00403 11.9999 4.00403Z"
+                  fill="#002645"
+                />
+              </svg>
+
+              <label for="studentid" class="formtext" id="one"
+                >Student ID</label
+              >
+            </div>
+            <div id="idinputdiv">
+              <input
+                id="codeBox1"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(1, event)"
+                onfocus="onFocusEvent(1)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox2"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(2, event)"
+                onfocus="onFocusEvent(2)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox3"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(3, event)"
+                onfocus="onFocusEvent(3)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox4"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(4, event)"
+                onfocus="onFocusEvent(4)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox5"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(5, event)"
+                onfocus="onFocusEvent(5)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox6"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(6, event)"
+                onfocus="onFocusEvent(6)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox7"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(7, event)"
+                onfocus="onFocusEvent(7)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox8"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(8, event)"
+                onfocus="onFocusEvent(8)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
+              <input
+                id="codeBox9"
+                type="number"
+                maxlength="1"
+                onkeyup="onKeyUpEvent(9, event)"
+                onfocus="onFocusEvent(9)"
+                onfocusout="unfocus()"
+                placeholder="0"
+              />
             </div>
 
-        </noscript>
+            <div class="labeldiv">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2.5C13.0609 2.5 14.0783 2.92143 14.8284 3.67157C15.5786 4.42172 16 5.43913 16 6.5V8.5H17.75C18.0455 8.5 18.3381 8.5582 18.611 8.67127C18.884 8.78434 19.1321 8.95008 19.341 9.15901C19.5499 9.36794 19.7157 9.61598 19.8287 9.88896C19.9418 10.1619 20 10.4545 20 10.75V20.25C20 20.5455 19.9418 20.8381 19.8287 21.111C19.7157 21.384 19.5499 21.6321 19.341 21.841C19.1321 22.0499 18.884 22.2157 18.611 22.3287C18.3381 22.4418 18.0455 22.5 17.75 22.5H6.25C5.65326 22.5 5.08097 22.2629 4.65901 21.841C4.23705 21.419 4 20.8467 4 20.25V10.75C4 10.1533 4.23705 9.58097 4.65901 9.15901C5.08097 8.73705 5.65326 8.5 6.25 8.5H8V6.5C8 5.43913 8.42143 4.42172 9.17157 3.67157C9.92172 2.92143 10.9391 2.5 12 2.5ZM17.75 10H6.25C6.05109 10 5.86032 10.079 5.71967 10.2197C5.57902 10.3603 5.5 10.5511 5.5 10.75V20.25C5.5 20.664 5.836 21 6.25 21H17.75C17.9489 21 18.1397 20.921 18.2803 20.7803C18.421 20.6397 18.5 20.4489 18.5 20.25V10.75C18.5 10.5511 18.421 10.3603 18.2803 10.2197C18.1397 10.079 17.9489 10 17.75 10ZM12 14C12.3978 14 12.7794 14.158 13.0607 14.4393C13.342 14.7206 13.5 15.1022 13.5 15.5C13.5 15.8978 13.342 16.2794 13.0607 16.5607C12.7794 16.842 12.3978 17 12 17C11.6022 17 11.2206 16.842 10.9393 16.5607C10.658 16.2794 10.5 15.8978 10.5 15.5C10.5 15.1022 10.658 14.7206 10.9393 14.4393C11.2206 14.158 11.6022 14 12 14ZM12 4C11.337 4 10.7011 4.26339 10.2322 4.73223C9.76339 5.20107 9.5 5.83696 9.5 6.5V8.5H14.5V6.5C14.5 5.83696 14.2366 5.20107 13.7678 4.73223C13.2989 4.26339 12.663 4 12 4Z"
+                  fill="#002645"
+                />
+              </svg>
+              <label for="password" id="pwd" class="formtext">Password</label
+              ><br />
+            </div>
+            <div id="pwd-div">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onfocus="focusText()"
+                onfocusout="unfocusText()"
+                placeholder="••••••••"
+              />
+              <button
+                id="btn"
+                type="submit"
+                form="form"
+                value="Submit"
+                onclick="readCredentials();"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.267 4.20902C13.122 4.07777 12.9314 4.00838 12.7359 4.01566C12.5404 4.02293 12.3555 4.1063 12.2206 4.24797C12.0857 4.38964 12.0115 4.57841 12.0138 4.77402C12.0161 4.96962 12.0948 5.15658 12.233 5.29502L18.484 11.25H3.75C3.55109 11.25 3.36032 11.329 3.21967 11.4697C3.07902 11.6103 3 11.8011 3 12C3 12.1989 3.07902 12.3897 3.21967 12.5303C3.36032 12.671 3.55109 12.75 3.75 12.75H18.484L12.233 18.704C12.0889 18.8411 12.0051 19.0299 12.0001 19.2288C11.9951 19.4277 12.0694 19.6204 12.2065 19.7645C12.3436 19.9087 12.5324 19.9924 12.7313 19.9974C12.9301 20.0024 13.1229 19.9281 13.267 19.791L20.687 12.724C20.8493 12.5699 20.955 12.3656 20.987 12.144C21.0053 12.0482 21.005 11.9497 20.986 11.854C20.9537 11.6332 20.848 11.4296 20.686 11.276L13.267 4.20902Z"
+                    fill="#606266"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
 
+          <span class="forgot">I can't remember my password or Student ID</span>
+        </div>
+      </div>
+      <div class="visions">made by visions.</div>
+    </div>
 
+    <div class="gradient-circle1"></div>
+    <svg
+      width="88"
+      height="88"
+      viewBox="0 0 88 88"
+      xmlns="http://www.w3.org/2000/svg"
+      class="paper"
+    >
+      <path
+        d="M68.248 72.7971H19.1094C12.8014 72.7971 7.64652 67.8597 7.29851 61.6387L7.27979 60.9674L7.27979 22.7485C7.27979 18.4139 10.6473 14.8658 14.9088 14.5777L15.4695 14.5588H60.9682C65.3029 14.5588 68.851 17.9263 69.1391 22.1878L69.158 22.7485V25.4785H71.8879C76.2225 25.4785 79.7707 28.846 80.0588 33.1075L80.0777 33.6682V60.9674C80.0777 67.2755 75.1403 72.4304 68.9193 72.7784L68.248 72.7971H19.1094H68.248ZM19.1094 67.3372H68.248C71.5901 67.3372 74.331 64.7634 74.5967 61.4899L74.6178 60.9674V33.6682C74.6178 32.2862 73.5908 31.144 72.2584 30.9632L71.8879 30.9383H69.158V59.1475C69.158 60.5295 68.131 61.6717 66.7985 61.8525L66.4281 61.8774C65.046 61.8774 63.9039 60.8504 63.7231 59.5179L63.6982 59.1475V22.7485C63.6982 21.3665 62.6712 20.2243 61.3387 20.0435L60.9682 20.0186H15.4695C14.0875 20.0186 12.9453 21.0456 12.7645 22.3781L12.7396 22.7485L12.7396 60.9674C12.7396 64.3095 15.3134 67.0504 18.587 67.3161L19.1094 67.3372H68.248H19.1094ZM44.5742 52.7777H55.5166C57.0242 52.7777 58.2465 53.9999 58.2465 55.5076C58.2465 56.8896 57.2195 58.0318 55.887 58.2126L55.5166 58.2375H44.5742C43.0665 58.2375 41.8443 57.0153 41.8443 55.5076C41.8443 54.1255 42.8713 52.9834 44.2038 52.8026L44.5742 52.7777H55.5166H44.5742ZM33.6446 40.0543C35.1523 40.0543 36.3745 41.2766 36.3745 42.7843V55.5076C36.3745 57.0153 35.1523 58.2375 33.6446 58.2375H20.9212C19.4135 58.2375 18.1913 57.0153 18.1913 55.5076V42.7843C18.1913 41.2766 19.4135 40.0543 20.9212 40.0543H33.6446ZM30.9147 45.5142H23.6512V52.7777H30.9147V45.5142ZM44.5742 40.0543H55.5166C57.0242 40.0543 58.2465 41.2766 58.2465 42.7843C58.2465 44.1663 57.2195 45.3085 55.887 45.4893L55.5166 45.5142H44.5742C43.0665 45.5142 41.8443 44.2919 41.8443 42.7843C41.8443 41.4022 42.8713 40.26 44.2038 40.0793L44.5742 40.0543H55.5166H44.5742ZM20.9212 27.3074H55.5166C57.0242 27.3074 58.2465 28.5296 58.2465 30.0373C58.2465 31.4194 57.2195 32.5616 55.887 32.7423L55.5166 32.7672H20.9212C19.4135 32.7672 18.1913 31.545 18.1913 30.0373C18.1913 28.6553 19.2183 27.5131 20.5508 27.3323L20.9212 27.3074H55.5166H20.9212Z"
+        fill="black"
+        fill-opacity="0.1"
+      />
+    </svg>
+    <svg
+      width="82"
+      height="82"
+      viewBox="0 0 82 82"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="books"
+    >
+      <g opacity="0.15">
+        <path
+          d="M13.6666 10.25H17.0833C20.6844 10.25 23.6364 13.038 23.8995 16.5708L23.9166 17.0833L23.9166 64.9167C23.9155 66.6398 23.2637 68.299 22.0917 69.5622C20.9197 70.8254 19.314 71.5995 17.5958 71.7295L17.0833 71.75H13.6666C11.9428 71.7497 10.2828 71.0984 9.01889 69.9263C7.75496 68.7542 6.98041 67.148 6.85034 65.4292L6.83325 64.9167L6.83325 17.0833C6.83325 13.4822 9.62125 10.5302 13.1541 10.2671L13.6666 10.25H17.0833H13.6666ZM34.1666 10.25H37.5833C41.1844 10.25 44.1364 13.038 44.3995 16.5708L44.4166 17.0833L44.4166 64.9167C44.4155 66.6398 43.7637 68.299 42.5917 69.5622C41.4197 70.8254 39.814 71.5995 38.0958 71.7295L37.5833 71.75H34.1666C32.4428 71.7497 30.7828 71.0984 29.5189 69.9263C28.255 68.7542 27.4804 67.148 27.3503 65.4292L27.3333 64.9167L27.3333 17.0833C27.3333 13.4822 30.1213 10.5302 33.6541 10.2671L34.1666 10.25H37.5833H34.1666ZM57.9944 17.0833C60.8644 17.0833 63.4884 18.8976 64.4519 21.6822L64.6125 22.2186L74.9138 62.3473C75.3426 64.0169 75.1246 65.7869 74.3034 67.3025C73.4822 68.8182 72.1186 69.9674 70.4858 70.52L69.9938 70.6669L66.683 71.5143C65.0211 71.9387 63.2605 71.7233 61.7499 70.9108C60.2394 70.0982 59.0892 68.7479 58.5274 67.1272L58.3668 66.5977L48.0622 26.4689C47.6337 24.7984 47.8527 23.0277 48.6752 21.512C49.4977 19.9962 50.8629 18.8475 52.497 18.2963L52.9856 18.1493L56.2929 17.302C56.8601 17.1551 57.4341 17.0833 57.9944 17.0833V17.0833ZM17.0833 15.375L13.6666 15.375C13.2669 15.3755 12.8801 15.5159 12.573 15.7717C12.266 16.0276 12.0582 16.3828 11.9856 16.7758L11.9583 17.0833L11.9583 64.9167C11.9583 65.7503 12.563 66.4542 13.3591 66.5977L13.6666 66.625H17.0833C17.9203 66.625 18.6208 66.0168 18.7643 65.2242L18.7916 64.9167L18.7916 17.0833C18.7911 16.6837 18.6507 16.2968 18.3948 15.9898C18.139 15.6827 17.7838 15.4749 17.3908 15.4023L17.0833 15.375ZM37.5833 15.375L34.1666 15.375C33.7669 15.3755 33.3801 15.5159 33.073 15.7717C32.766 16.0276 32.5582 16.3828 32.4856 16.7758L32.4583 17.0833L32.4583 64.9167C32.4583 65.7503 33.063 66.4542 33.8591 66.5977L34.1666 66.625H37.5833C38.4203 66.625 39.1208 66.0168 39.2643 65.2242L39.2916 64.9167L39.2916 17.0833C39.2911 16.6837 39.1507 16.2968 38.8948 15.9898C38.639 15.6827 38.2838 15.4749 37.8908 15.4023L37.5833 15.375ZM57.9978 22.2083L57.7826 22.222L57.5673 22.2664L54.26 23.1103C53.8769 23.2065 53.5392 23.433 53.3048 23.7509C53.0704 24.0688 52.9539 24.4584 52.9753 24.8528L53.0266 25.1945L63.3313 65.3232C63.4258 65.6893 63.6391 66.0137 63.9377 66.2455C64.2363 66.4774 64.6034 66.6037 64.9815 66.6045L65.1968 66.5942L65.4086 66.5533L68.7228 65.6991C69.1094 65.5994 69.4489 65.3675 69.6824 65.0436C69.9158 64.7196 70.0284 64.3241 70.0006 63.9258L69.9493 63.6252L59.6481 23.4896C59.553 23.1238 59.3396 22.7998 59.0411 22.568C58.7426 22.3362 58.3758 22.2098 57.9978 22.2083Z"
+          fill="#606266"
+        />
+      </g>
+    </svg>
 
-
-
-
-
-
-
-
-
-
-
-
-    </body>
-
+    <div class="gradient-circle2"></div>
+    <svg
+      width="91"
+      height="92"
+      viewBox="0 0 91 92"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="calendar"
+    >
+      <path
+        d="M67.0287 12.2432C73.7866 12.2432 79.265 17.7215 79.265 24.4795V67.7772C79.265 74.5351 73.7866 80.0135 67.0287 80.0135H23.7309C16.973 80.0135 11.4946 74.5351 11.4946 67.7772V24.4795C11.4946 17.7215 16.973 12.2432 23.7309 12.2432H67.0287ZM73.6175 32.9508H17.1422V67.7772C17.1422 71.4161 20.0921 74.366 23.7309 74.366H67.0287C70.6676 74.366 73.6175 71.4161 73.6175 67.7772V32.9508ZM29.3785 55.5409C31.9777 55.5409 34.0848 57.648 34.0848 60.2472C34.0848 62.8464 31.9777 64.9535 29.3785 64.9535C26.7793 64.9535 24.6722 62.8464 24.6722 60.2472C24.6722 57.648 26.7793 55.5409 29.3785 55.5409ZM45.3798 55.5409C47.979 55.5409 50.0861 57.648 50.0861 60.2472C50.0861 62.8464 47.979 64.9535 45.3798 64.9535C42.7806 64.9535 40.6735 62.8464 40.6735 60.2472C40.6735 57.648 42.7806 55.5409 45.3798 55.5409ZM29.3785 40.4808C31.9777 40.4808 34.0848 42.5879 34.0848 45.1871C34.0848 47.7863 31.9777 49.8934 29.3785 49.8934C26.7793 49.8934 24.6722 47.7863 24.6722 45.1871C24.6722 42.5879 26.7793 40.4808 29.3785 40.4808ZM45.3798 40.4808C47.979 40.4808 50.0861 42.5879 50.0861 45.1871C50.0861 47.7863 47.979 49.8934 45.3798 49.8934C42.7806 49.8934 40.6735 47.7863 40.6735 45.1871C40.6735 42.5879 42.7806 40.4808 45.3798 40.4808ZM61.3812 40.4808C63.9804 40.4808 66.0874 42.5879 66.0874 45.1871C66.0874 47.7863 63.9804 49.8934 61.3812 49.8934C58.7819 49.8934 56.6749 47.7863 56.6749 45.1871C56.6749 42.5879 58.7819 40.4808 61.3812 40.4808ZM67.0287 17.8907H23.7309C20.0921 17.8907 17.1422 20.8406 17.1422 24.4795V27.3032H73.6175V24.4795C73.6175 20.8406 70.6676 17.8907 67.0287 17.8907Z"
+        fill="black"
+        fill-opacity="0.15"
+      />
+    </svg>
+    <svg
+      width="92"
+      height="91"
+      viewBox="0 0 92 91"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="apps"
+    >
+      <path
+        d="M33.8505 49.5037C38.5291 49.5037 42.3218 53.2964 42.3218 57.975V71.1526C42.3218 75.8311 38.5291 79.6239 33.8505 79.6239H20.673C15.9944 79.6239 12.2017 75.8311 12.2017 71.1526V57.975C12.2017 53.2964 15.9944 49.5037 20.673 49.5037H33.8505ZM71.5007 49.5037C76.1793 49.5037 79.972 53.2964 79.972 57.975V71.1526C79.972 75.8311 76.1793 79.6239 71.5007 79.6239H58.3232C53.6446 79.6239 49.8519 75.8311 49.8519 71.1526V57.975C49.8519 53.2964 53.6446 49.5037 58.3232 49.5037H71.5007ZM33.8505 55.1512H20.673C19.1134 55.1512 17.8492 56.4155 17.8492 57.975V71.1526C17.8492 72.7121 19.1134 73.9763 20.673 73.9763H33.8505C35.41 73.9763 36.6743 72.7121 36.6743 71.1526V57.975C36.6743 56.4155 35.41 55.1512 33.8505 55.1512ZM71.5007 55.1512H58.3232C56.7636 55.1512 55.4994 56.4155 55.4994 57.975V71.1526C55.4994 72.7121 56.7636 73.9763 58.3232 73.9763H71.5007C73.0602 73.9763 74.3245 72.7121 74.3245 71.1526V57.975C74.3245 56.4155 73.0602 55.1512 71.5007 55.1512ZM33.8505 11.8535C38.5291 11.8535 42.3218 15.6462 42.3218 20.3248V33.5024C42.3218 38.1809 38.5291 41.9737 33.8505 41.9737H20.673C15.9944 41.9737 12.2017 38.1809 12.2017 33.5024V20.3248C12.2017 15.6462 15.9944 11.8535 20.673 11.8535H33.8505ZM71.5007 11.8535C76.1793 11.8535 79.972 15.6462 79.972 20.3248V33.5024C79.972 38.1809 76.1793 41.9737 71.5007 41.9737H58.3232C53.6446 41.9737 49.8519 38.1809 49.8519 33.5024V20.3248C49.8519 15.6462 53.6446 11.8535 58.3232 11.8535H71.5007ZM33.8505 17.501H20.673C19.1134 17.501 17.8492 18.7653 17.8492 20.3248V33.5024C17.8492 35.0619 19.1134 36.3261 20.673 36.3261H33.8505C35.41 36.3261 36.6743 35.0619 36.6743 33.5024V20.3248C36.6743 18.7653 35.41 17.501 33.8505 17.501ZM71.5007 17.501H58.3232C56.7636 17.501 55.4994 18.7653 55.4994 20.3248V33.5024C55.4994 35.0619 56.7636 36.3261 58.3232 36.3261H71.5007C73.0602 36.3261 74.3245 35.0619 74.3245 33.5024V20.3248C74.3245 18.7653 73.0602 17.501 71.5007 17.501Z"
+        fill="black"
+        fill-opacity="0.1"
+      />
+    </svg>
+    <svg
+      width="78"
+      height="49"
+      viewBox="0 0 78 49"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="foru"
+    >
+      <path
+        d="M9.0321 14.2462L0 28.4881L0 32.8065L0 37.1291H10.323L20.646 37.1291L20.646 42.3852V47.6414H25.3765H30.107V42.3852L30.107 37.1291H32.9663H35.8256L35.8256 33.1345V29.1399H32.9663H30.107L30.107 16.9541C30.107 8.92697 30.0902 4.60014 30.0607 4.26796C29.9051 2.42201 29.1945 1.21101 27.8784 0.546633C27.3276 0.269111 26.7473 0.117735 25.9231 0.0420467C25.6498 0.0168174 23.9426 -2.15153e-06 21.7603 -2.15153e-06L18.06 0.00420273L9.0321 14.2462ZM20.8142 18.964L20.8142 29.4342H14.1705C8.44762 29.4342 7.52675 29.4258 7.55618 29.3753C7.7454 29.0389 20.7595 8.49387 20.7848 8.49387C20.8016 8.49387 20.8142 13.2033 20.8142 18.964Z"
+        fill="black"
+        fill-opacity="0.05"
+      />
+      <path
+        d="M44.3172 0.0298489C43.7285 0.0887173 43.0347 0.315781 42.5007 0.614328C41.5966 1.12732 40.7388 2.06081 40.2847 3.03214C40.0955 3.4316 39.9231 3.99926 39.86 4.41134C39.8306 4.59636 39.8179 9.38993 39.8306 18.6701L39.8432 32.6514L39.9357 33.4545C40.3267 36.8605 41.1929 39.4338 42.6815 41.6288C45.1077 45.2114 49.0729 47.3769 54.493 48.0833C57.2051 48.4365 60.3294 48.4281 62.9448 48.0581C70.7911 46.9564 75.6814 42.5791 77.1111 35.3845C77.3465 34.1988 77.4685 33.177 77.5358 31.7894C77.561 31.2049 77.5778 25.4021 77.5778 15.4408V0.000414724H72.7422H67.9066V15.1885C67.9066 24.9438 67.8898 30.5826 67.8645 30.9484C67.6879 33.2947 67.1329 35.1659 66.191 36.5829C64.9716 38.4205 63.1803 39.4759 60.6531 39.8501C59.9341 39.9552 57.8106 39.9552 57.058 39.8501C54.3458 39.4675 52.4032 38.328 51.1543 36.3811C50.6539 35.6074 50.1367 34.3039 49.8928 33.219C49.7583 32.6093 49.6321 31.7221 49.5733 30.9946C49.5438 30.612 49.5312 25.419 49.5312 15.2137L49.5312 0.000414724L46.9999 0.0088245C45.6039 0.0088245 44.3971 0.0214392 44.3172 0.0298489Z"
+        fill="black"
+        fill-opacity="0.05"
+      />
+    </svg>
+  </body>
 </html>
