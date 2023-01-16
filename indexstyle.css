@@ -130,8 +130,8 @@ body {
   font-family: "Circular";
   font-style: normal;
   font-weight: 450;
-  font-size: 20px;
-  line-height: 25px;
+  font-size: 2rem;
+  line-height: 2.5rem;
   color: #adafb3;
   justify-self: flex-end;
   align-self: center;
@@ -230,18 +230,18 @@ body {
   font-family: "Segoe UI Variable Display";
   font-style: normal;
   font-weight: 500;
-  font-size: 28px;
-  line-height: 37px;
+  font-size: 2.8rem;
+  line-height: 3.7rem;
   color: #002645;
-  padding-bottom: 34px;
+  padding-bottom: 1.214em;
 }
 
 .formtext {
   font-family: "Segoe UI Variable Small";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 27px;
+  font-size: 2rem;
+  line-height: 2.7rem;
   color: #002645;
 }
 
@@ -262,7 +262,6 @@ input[type="text"] {
   background: none;
   height: 58px;
   width: 43px;
-  font-size: 25px;
   text-align: center;
   border: none;
   border-bottom: #adafb3 solid 3px;
@@ -271,8 +270,8 @@ input[type="text"] {
   font-family: "Segoe UI Variable Display";
   font-style: normal;
   font-weight: 400;
-  font-size: 28px;
-  line-height: 37px;
+  font-size: 2.8rem;
+  line-height: 3.7rem;
 }
 
 /* input[type="number"]::-webkit-inner-spin-button,
@@ -341,8 +340,8 @@ input[type="text"]:not(:placeholder-shown) {
   width: 100%;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
   text-align: center;
   color: #606266;
 }
