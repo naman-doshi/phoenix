@@ -2,7 +2,7 @@
   font-family: "Segoe UI Variable Small";
   src: local("Segoe UI Variable Small"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
-  font-variation-settings: "opsz" 1;
+  /* font-variation-settings: "opsz" 1; */
   font-weight: 300 700;
   font-style: normal;
 }
@@ -10,7 +10,7 @@
   font-family: "Segoe UI Variable Text";
   src: local("Segoe UI Variable Text"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
-  font-variation-settings: "opsz" 10.5;
+  /* font-variation-settings: "opsz" 10.5; */
   font-weight: 300 700;
   font-style: normal;
 }
@@ -18,7 +18,7 @@
   font-family: "Segoe UI Variable Display";
   src: local("Segoe UI Variable Display"),
     url("SegoeUI-VF.ttf") format("truetype-variations");
-  font-variation-settings: "opsz" 36;
+  /* font-variation-settings: "opsz" 36; */
   font-weight: 300 700;
   font-style: normal;
 }
@@ -97,15 +97,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.642em 1.5714em;
+  padding: 0.75em 1.667em;
   background: #002645;
   box-shadow: 0px 4px 41px rgba(0, 0, 0, 0.02);
   border-radius: 16px;
   font-family: "Segoe UI Variable Display";
   font-style: normal;
   font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 3.7rem;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
   color: #ffffff;
   text-align: center;
   transition-duration: 0.2s;
@@ -221,6 +221,7 @@ body {
 .loginbox {
   padding: 36px;
   background: #ebf2ff;
+  box-shadow: 0px 4px 120px rgba(0, 0, 0, 0.1);
   border-radius: 28px;
   position: relative;
 }
@@ -251,12 +252,13 @@ body {
 .labeldiv {
   display: flex;
   align-items: center;
+  width: 100%;
   gap: 8px;
   margin-top: 36px;
   margin-bottom: 19px;
 }
 
-input[type="number"] {
+input[type="text"] {
   background: none;
   height: 58px;
   width: 43px;
@@ -273,23 +275,23 @@ input[type="number"] {
   line-height: 37px;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
+/* input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
-input[type="number"]:focus {
+input[type="text"]:focus {
   outline: none;
   color: #606266;
   border-bottom: #606266 solid 3px;
 }
 
-input[type="number"]:focus::placeholder {
+input[type="text"]:focus::placeholder {
   color: transparent;
 }
 
-input[type="number"]:not(:placeholder-shown) {
+input[type="text"]:not(:placeholder-shown) {
   color: #002645;
   border-bottom: #002645 solid 3px;
 }
@@ -364,6 +366,22 @@ input[type="number"]:not(:placeholder-shown) {
   background: rgb(0, 0, 0, 0.07);
 }
 
+#btn:hover svg path {
+  fill: #002645;
+}
+
 .error svg path {
   fill: red;
+}
+
+#noID,
+#nopwd {
+  display: none;
+  font-family: "Segoe UI Variable Small";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  color: #da4154;
+  margin-left: auto;
 }

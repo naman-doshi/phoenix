@@ -20,8 +20,8 @@
             getCodeBoxElement(index + 1).focus();
           } else {
             getCodeBoxElement(index).blur();
-            // Submit code
-            console.log("submit code ");
+            focusText();
+            document.getElementById("password").focus();
           }
         }
         if (eventCode === 8 && index !== 1) {
@@ -81,6 +81,7 @@
       function passHero() {
         document.getElementById("hero-box").style.display = "none";
         document.getElementById("container2").style.display = "flex";
+        onFocusEvent(2);
       }
 
       async function hashString(passedString) {
@@ -110,13 +111,21 @@
             i += 1;
           }
           let passwordCredential = document.getElementById("password").value;
-          console.log(emailCredential);
-          console.log(passwordCredential);
           var hashedCredentials = "";
           var credentialsValid = true;
 
-          if (emailCredential.length < 9 || passwordCredential.length < 8) {
+          if (emailCredential.length < 9) {
+            document.getElementById("noID").style.display = "block";
             document.getElementById("btn").classList.add("error");
+            let box = document.getElementById("idinputdiv");
+            box.style.border = "2px solid #da4154";
+            return false;
+          } else if (passwordCredential.length < 8) {
+            document.getElementById("nopwd").style.display = "block";
+            let box = document.getElementById("pwd-div");
+            box.style.border = "2px solid #da4154";
+            document.getElementById("btn").classList.add("error");
+            return false;
           } else {
             emailCredential =
               emailCredential + "." + "user" + "@education.nsw.gov.au";
@@ -138,8 +147,8 @@
                 if (dataFetched >= requiredFetches) {
                   dataFetched = dataFetched + 1;
                   location.assign(
-                    // window.location.href.replace("index.html", "mynsb.html")
-                    window.location.href + "mynsb.html"
+                    window.location.href.replace("index.html", "mynsb.html")
+                    // window.location.href + "mynsb.html"
                   );
                 }
               } else if (dataFetched < requiredFetches) {
@@ -180,6 +189,9 @@
             if (credentialResponseStatus == 200) {
               if (credentialsValid == "INVALID") {
                 document.getElementById("btn").classList.add("error");
+                document.getElementById("nopwd").style.display = "block";
+                let box = document.getElementById("pwd-div");
+                box.style.border = "2px solid #da4154";
               } else if (credentialsValid != "INVALID") {
                 console.log(hashedCredentials);
                 file = "mynsb.html";
@@ -187,6 +199,9 @@
               }
             } else if (credentialResponseStatus != 200) {
               document.getElementById("btn").classList.add("error");
+              document.getElementById("nopwd").style.display = "block";
+              let box = document.getElementById("pwd-div");
+              box.style.border = "2px solid #da4154";
             }
             tryToRedirect(false);
           });
@@ -226,6 +241,7 @@
         } catch (err) {
           console.log(err);
         }
+        return false;
       }
     </script>
   </head>
@@ -270,8 +286,7 @@
           <form
             class="form"
             id="form"
-            onsubmit="console.log('submit'); return false;"
-            method="post"
+            onsubmit="readCredentials(); return false;"
           >
             <div class="labeldiv">
               <svg
@@ -290,85 +305,104 @@
               <label for="studentid" class="formtext" id="one"
                 >Student ID</label
               >
+
+              <span id="noID">Invalid Student ID</span>
             </div>
             <div id="idinputdiv">
               <input
                 id="codeBox1"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(1, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(1)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox2"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(2, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(2)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox3"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(3, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(3)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox4"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(4, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(4)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox5"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(5, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(5)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox6"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(6, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(6)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox7"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(7, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(7)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox8"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(8, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(8)"
                 onfocusout="unfocus()"
                 placeholder="0"
+                value=""
               />
               <input
                 id="codeBox9"
-                type="number"
+                type="text"
                 maxlength="1"
                 onkeyup="onKeyUpEvent(9, event)"
+                onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
                 onfocus="onFocusEvent(9)"
                 onfocusout="unfocus()"
                 placeholder="0"
@@ -389,8 +423,8 @@
                   fill="#002645"
                 />
               </svg>
-              <label for="password" id="pwd" class="formtext">Password</label
-              ><br />
+              <label for="password" id="pwd" class="formtext">Password</label>
+              <span id="nopwd">Incorrect Password</span>
             </div>
             <div id="pwd-div">
               <input
@@ -401,13 +435,7 @@
                 onfocusout="unfocusText()"
                 placeholder="••••••••"
               />
-              <button
-                id="btn"
-                type="submit"
-                form="form"
-                value="Submit"
-                onclick="readCredentials();"
-              >
+              <button id="btn" type="submit" form="form" value="Submit">
                 <svg
                   width="24"
                   height="24"
