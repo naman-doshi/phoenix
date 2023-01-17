@@ -3,7 +3,6 @@
   src: local("Segoe UI Variable Small"), url("SegoeUI.ttf") format("truetype"),
     url("SegoeUI.woff") format("woff");
   /* font-variation-settings: "opsz" 1; */
-  font-weight: 300 700;
   font-style: normal;
 }
 @font-face {
@@ -11,7 +10,6 @@
   src: local("Segoe UI Variable Text"), url("SegoeUI.ttf") format("truetype"),
     url("SegoeUI.woff") format("woff");
   /* font-variation-settings: "opsz" 10.5; */
-  font-weight: 300 700;
   font-style: normal;
 }
 @font-face {
@@ -19,7 +17,6 @@
   src: local("Segoe UI Variable Display"), url("SegoeUI.ttf") format("truetype"),
     url("SegoeUI.woff") format("woff");
   /* font-variation-settings: "opsz" 36; */
-  font-weight: 300 700;
   font-style: normal;
 }
 
@@ -50,7 +47,7 @@ html {
 
 body {
   font-family: "Segoe UI Variable Display", sans-serif;
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
   -webkit-text-stroke: 1px transparent;
   line-height: 1;
   font-weight: 400;
