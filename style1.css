@@ -1,25 +1,26 @@
 @font-face {
   font-family: "Segoe UI Variable Small";
   src: local("Segoe UI Variable Small"),
-    url("SegoeUI-VF.ttf") format("truetype-variations");
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
   font-variation-settings: "opsz" 1;
-  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Segoe UI Variable Text";
   src: local("Segoe UI Variable Text"),
-    url("SegoeUI-VF.ttf") format("truetype-variations");
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
   font-variation-settings: "opsz" 10.5;
-  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Segoe UI Variable Display";
   src: local("Segoe UI Variable Display"),
-    url("SegoeUI-VF.ttf") format("truetype-variations");
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
   font-variation-settings: "opsz" 36;
-  font-weight: 300 400 500 600 700;
   font-style: normal;
 }
 :root {

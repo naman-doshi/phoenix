@@ -111,6 +111,9 @@
             i += 1;
           }
           let passwordCredential = document.getElementById("password").value;
+          // emailCredential = "naman.doshi@education.nsw.gov.au";
+          console.log(emailCredential);
+          console.log(passwordCredential);
           var hashedCredentials = "";
           var credentialsValid = true;
 
@@ -119,6 +122,7 @@
             document.getElementById("btn").classList.add("error");
             let box = document.getElementById("idinputdiv");
             box.style.border = "2px solid #da4154";
+
             return false;
           } else if (passwordCredential.length < 8) {
             document.getElementById("nopwd").style.display = "block";
@@ -142,16 +146,19 @@
 
             function tryToRedirect(addToCount = true) {
               if (addToCount == true) {
+                console.log("addtocount");
                 requiredFetches = requiredFetches + 1;
               } else if (addToCount == false) {
                 if (dataFetched >= requiredFetches) {
+                  console.log("enoughdata");
                   dataFetched = dataFetched + 1;
                   location.assign(
-                    // window.location.href.replace("index.html", "mynsb.html")
-                    window.location.href + "mynsb.html"
+                    window.location.href.replace("index.html", "mynsb.html")
+                    // window.location.href + "mynsb.html"
                   );
                 }
               } else if (dataFetched < requiredFetches) {
+                console.log("fetcheddata");
                 dataFetched = dataFetched + 1;
               }
             }
@@ -192,6 +199,8 @@
                 document.getElementById("nopwd").style.display = "block";
                 let box = document.getElementById("pwd-div");
                 box.style.border = "2px solid #da4154";
+                console.log("200");
+                return false;
               } else if (credentialsValid != "INVALID") {
                 console.log(hashedCredentials);
                 file = "mynsb.html";
@@ -202,6 +211,8 @@
               document.getElementById("nopwd").style.display = "block";
               let box = document.getElementById("pwd-div");
               box.style.border = "2px solid #da4154";
+              console.log("212");
+              return false;
             }
             tryToRedirect(false);
           });
@@ -229,17 +240,20 @@
 
             if (metadataResponseStatus == 200) {
               if (metadataResponse == "INVALID") {
+                return false;
               } else if (metadataResponse != "INVALID") {
                 console.log(metadataResponse);
                 localStorage.setItem("studentMetadata", metadataResponse);
               }
             } else if (credentialResponseStatus != 200) {
+              return false;
             }
 
             tryToRedirect(false);
           });
         } catch (err) {
           console.log(err);
+          return false;
         }
         return false;
       }

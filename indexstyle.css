@@ -1,22 +1,25 @@
 @font-face {
   font-family: "Segoe UI Variable Small";
-  src: local("Segoe UI Variable Small"), url("SegoeUI.ttf") format("truetype"),
-    url("SegoeUI.woff") format("woff");
-  /* font-variation-settings: "opsz" 1; */
+  src: local("Segoe UI Variable Small"),
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
+  font-variation-settings: "opsz" 1;
   font-style: normal;
 }
 @font-face {
   font-family: "Segoe UI Variable Text";
-  src: local("Segoe UI Variable Text"), url("SegoeUI.ttf") format("truetype"),
-    url("SegoeUI.woff") format("woff");
-  /* font-variation-settings: "opsz" 10.5; */
+  src: local("Segoe UI Variable Text"),
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
+  font-variation-settings: "opsz" 10.5;
   font-style: normal;
 }
 @font-face {
   font-family: "Segoe UI Variable Display";
-  src: local("Segoe UI Variable Display"), url("SegoeUI.ttf") format("truetype"),
-    url("SegoeUI.woff") format("woff");
-  /* font-variation-settings: "opsz" 36; */
+  src: local("Segoe UI Variable Display"),
+    url("SegoeUI.ttf") format("truetype-variations"),
+    url("SegoeUI.woff") format("woff-variations");
+  font-variation-settings: "opsz" 36;
   font-style: normal;
 }
 
